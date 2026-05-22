@@ -16,6 +16,7 @@ require_once(SLIB_DIR . '/wmp-setting.php');
 /* サイト特有のファンクション
 * ---------------------------------------- */
 require_once('function/site.php');
+require_once('function/content-modules.php');
 
 // リライトルール追加
 function wmp_rewrite_rule()
