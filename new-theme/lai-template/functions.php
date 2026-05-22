@@ -5,7 +5,9 @@ $path = explode("/", __FILE__);
 define('ABSOLUTE_PATH', '/' . $path[1] . '/' . $path[2] . '/' . $path[3]);
 define('CORE_DIR', ABSOLUTE_PATH . '/core');
 define('SLIB_DIR', CORE_DIR . '/lpLib');
-define('ACTIVATE_DOMAIN', 'laiweb.jp');
+
+$activate_host = parse_url(home_url(), PHP_URL_HOST);
+define('ACTIVATE_DOMAIN', preg_replace('/^www\./', '', (string) $activate_host));
 
 /* 共通ファンクション
 * ---------------------------------------- */
@@ -125,4 +127,3 @@ function convert_taxonomy_to_radio_buttons() {
     <?php
 }
 add_action('admin_footer', 'convert_taxonomy_to_radio_buttons');
-
