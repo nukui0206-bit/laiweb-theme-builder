@@ -70,6 +70,8 @@ header_layout
 footer_layout
 visual_layout
 site_type
+enabled_content_modules
+content_module_labels
 top_sections
 primary_color
 secondary_color
@@ -95,6 +97,31 @@ Possible footer layouts:
 footer-standard-nav
 footer-laiweb-rich
 footer-simple
+```
+
+Content module settings:
+
+```text
+news: お知らせ
+faq: よくある質問
+case: 施工事例/制作実績/実績・事例
+voice: お客様の声
+product: 商品紹介
+recruit: 採用情報
+staff: スタッフ
+column: コラム
+gallery: ギャラリー
+```
+
+Implementation policy:
+
+```text
+Use the existing content_type behavior as the base idea.
+Selected modules should appear in the admin menu and section choices.
+Unselected modules should be hidden from normal admin workflows.
+Do not delete posts, fields, or templates when a module is disabled.
+Avoid duplicate CPT registration when CPT UI or imported settings already define the post type.
+Keep labels configurable because the three source themes use different names for similar content.
 ```
 
 ## Phase 3: Top Page Section Builder
@@ -124,6 +151,7 @@ Initial MVP should support:
 header selection
 footer selection
 visual selection
+content module show/hide
 top section show/hide and order
 color variables
 CTA settings
@@ -161,4 +189,3 @@ Before applying to production sites:
 4. Verify `style.css + add.css` load order.
 5. Verify `wmp_get_link`, image helpers, post type archives, and nav rendering.
 6. Compare top page screenshots before/after.
-
