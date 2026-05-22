@@ -140,11 +140,20 @@ if (!function_exists('lai_template_content_module_choices')) {
     $choices = array();
 
     foreach (lai_template_content_modules() as $module) {
-      $value = !empty($module['content_type_value']) ? $module['content_type_value'] : $module['label'];
+      $value = lai_template_content_module_setting_value($module);
       $choices[$value] = $module['label'];
     }
 
     return $choices;
+  }
+}
+
+if (!function_exists('lai_template_get_content_module')) {
+  function lai_template_get_content_module($key)
+  {
+    $modules = lai_template_content_modules();
+
+    return !empty($modules[$key]) ? $modules[$key] : null;
   }
 }
 
@@ -171,6 +180,13 @@ if (!function_exists('lai_template_enabled_content_labels')) {
   }
 }
 
+if (!function_exists('lai_template_content_module_setting_value')) {
+  function lai_template_content_module_setting_value($module)
+  {
+    return !empty($module['content_type_value']) ? $module['content_type_value'] : $module['label'];
+  }
+}
+
 if (!function_exists('lai_template_content_module_values')) {
   function lai_template_content_module_values($module)
   {
@@ -188,19 +204,56 @@ if (!function_exists('lai_template_content_module_values')) {
   }
 }
 
+if (!function_exists('lai_template_enabled_content_modules')) {
+  function lai_template_enabled_content_modules()
+  {
+    $enabled = array();
+
+    foreach (lai_template_content_modules() as $key => $module) {
+      if (lai_template_is_content_module_enabled($key)) {
+        $enabled[$key] = $module;
+      }
+    }
+
+    return $enabled;
+  }
+}
+
 if (!function_exists('lai_template_is_content_module_enabled')) {
   function lai_template_is_content_module_enabled($key)
   {
-    $modules = lai_template_content_modules();
+    $module = lai_template_get_content_module($key);
 
-    if (empty($modules[$key])) {
+    if (empty($module)) {
       return false;
     }
 
     return !empty(array_intersect(
-      lai_template_content_module_values($modules[$key]),
+      lai_template_content_module_values($module),
       lai_template_enabled_content_labels()
     ));
+  }
+}
+
+if (!function_exists('lai_template_content_module_post_type')) {
+  function lai_template_content_module_post_type($key)
+  {
+    $module = lai_template_get_content_module($key);
+
+    return !empty($module['post_type']) ? $module['post_type'] : '';
+  }
+}
+
+if (!function_exists('lai_template_can_show_content_module')) {
+  function lai_template_can_show_content_module($key)
+  {
+    $post_type = lai_template_content_module_post_type($key);
+
+    if (!$post_type) {
+      return false;
+    }
+
+    return lai_template_is_content_module_enabled($key) && post_type_exists($post_type);
   }
 }
 

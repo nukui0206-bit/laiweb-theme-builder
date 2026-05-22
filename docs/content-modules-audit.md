@@ -116,6 +116,45 @@ CPTは既存のCPT UI/ACF/テーマ登録を尊重する。
 施工事例/制作実績/実績・事例のような呼び名違いは、ラベル設定で吸収する。
 ```
 
+## テーマ側ヘルパー
+
+`new-theme/lai-template/function/content-modules.php` に、テンプレートから使うためのヘルパーを置く。
+
+主な関数:
+
+```text
+lai_template_content_modules()
+全コンテンツ機能の中央レジストリを返す。
+
+lai_template_content_module_choices()
+ACFのcontent_type用チェックボックス選択肢を返す。
+
+lai_template_enabled_content_modules()
+現在ONになっているコンテンツ機能だけを返す。
+
+lai_template_is_content_module_enabled($key)
+初期設定で指定機能がONかどうかを返す。
+
+lai_template_can_show_content_module($key)
+初期設定でON、かつ投稿タイプが存在する場合だけtrueを返す。
+```
+
+テンプレートでの使い方:
+
+```php
+<?php if (lai_template_can_show_content_module('case')) : ?>
+  <?php get_template_part('include/top-sections/case'); ?>
+<?php endif; ?>
+```
+
+注意:
+
+```text
+既存のindex.phpをすぐに全部自動制御へ置き換えない。
+まずは新しく切り出す top-sections からこのヘルパーを使う。
+既存サイトの表示を壊さないため、既存index.phpのハードコード部分は段階的に移行する。
+```
+
 ## 初期レジストリ案
 
 ```text
