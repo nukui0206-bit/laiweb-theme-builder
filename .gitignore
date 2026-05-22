@@ -1,0 +1,7 @@
+sources/
+*.zip
+*.wpress
+node_modules/
+.DS_Store
+Thumbs.db
+

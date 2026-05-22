@@ -1,0 +1,435 @@
+@charset "UTF-8";
+/*
+:root{
+  --fa-style-family-classic:"Font Awesome 6 Pro";
+  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro"
+}
+
+
+@font-face{
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src:url(/cms/design/themes/doc/assets/fonts/webfonts/fa-thin-100.woff2) format("woff2"),
+  url(/cms/design/themes/doc/assets/fonts/webfonts/fa-thin-100.ttf) format("truetype")
+}
+.fa-thin,
+.fat{
+  font-family: 'Font Awesome 6 Pro';
+  font-weight: 100;
+}
+*/
+/*
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 400;
+  font-display:swap;
+  src: url('/cms/design/themes/doc/assets/fonts/NotoSansJP-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 700;
+  font-display:swap;
+  src: url('/cms/design/themes/doc/assets/fonts/NotoSansJP-Bold.otf') format('opentype');
+}
+*/
+.wf-tsuku {
+  font-family: "fot-tsukuaoldmin-pr6n", sans-serif;
+  font-weight: 300 !important;
+  font-style: normal;
+  font-display: swap;
+}
+
+.wf-rubik {
+  font-family: "Rubik", sans-serif;
+  font-weight: 700 !important;
+  font-style: normal;
+  font-display: swap;
+}
+
+.wf-montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ff: "Zen Kaku Gothic New", "Noto Sans JP", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  --fm: "游明朝", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "Sawarabi Mincho",
+    "HG明朝E", Meiryo, serif;
+  --fc: #1e1a1d;
+  --kc: #181818;
+  --kcd: #0b0b0b;
+  --sc: #005bac;
+  --scd: #004e93;
+  --ac: #fec20d;
+  --acd: #f1b501;
+  --yc: #f1f02f;
+  --rc: #cc0000;
+  --bc: #1e1a1d;
+  --link: #1e1a1d;
+  --link-w: #fff;
+  --black: #07111e;
+  --gold: #a09319;
+  --darkgray: #444;
+  --lightgray: #f2f2f2;
+  --gray: #eee;
+  --line: #00c306;
+  --lineDarken: #00aa05;
+  --facebook: #3b5998;
+  --twitter: #00aced;
+  --googleplus: #dd4b39;
+  --hatena: #00a4de;
+  --instagram: #cf2f91;
+  --fc-rgb: 30, 26, 29;
+  --kc-rgb: 24, 24, 24;
+  --kcd-rgb: 11, 11, 11;
+  --sc-rgb: 0, 91, 172;
+  --scd-rgb: 0, 78, 147;
+  --ac-rgb: 254, 194, 13;
+  --acd-rgb: 241, 181, 1;
+  --yc-rgb: 241, 240, 47;
+  --rc-rgb: 204, 0, 0;
+  --bc-rgb: 30, 26, 29;
+  --link-rgb: 30, 26, 29;
+  --line-rgb: 0, 195, 6;
+  --lineDarken-rgb: 0, 170, 5;
+  --black-rgb: 7, 17, 30;
+  --gold-rgb: 160, 147, 25;
+  --darkgray-rgb: 68, 68, 68;
+  --lightgray-rgb: 242, 242, 242;
+  --gray-rgb: 238, 238, 238;
+  --outer-width: 1280px;
+  --content-width: 940px;
+  --content-min-width: 640px;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f8f8f8;
+}
+::-webkit-scrollbar-thumb {
+  background: #6c6c6c;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 14px;
+  font-size: 1.4rem;
+  letter-spacing: 0.3px;
+  letter-spacing: 0.03rem;
+  color: var(--fc);
+  line-height: 1.8;
+  font-family: var(--ff);
+  font-weight: 100;
+  -webkit-font-feature-settings: "palt";
+          font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+  word-break: break-all;
+  position: relative;
+  text-align: center;
+}
+@media screen and (min-width: 992px) {
+  body {
+    font-size: 16px;
+    font-size: 1.6rem;
+  }
+}
+body.is-popup {
+  width: 100%;
+  max-width: 640px;
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}
+a:not([class]) {
+  color: var(--link);
+  text-decoration: none;
+}
+a:not([class]):hover {
+  text-decoration: underline;
+}
+
+select,
+input,
+textarea,
+button {
+  font-family: var(--ff);
+  line-height: normal;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+::-moz-selection {
+  background-color: var(--kc);
+  color: #fff;
+}
+
+::selection {
+  background-color: var(--kc);
+  color: #fff;
+}
+
+.is-pc,
+.pc {
+  display: none;
+}
+@media screen and (min-width: 992px) {
+  .is-pc,
+  .pc {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .is-sp,
+  .sp {
+    display: none;
+  }
+}
+
+.container {
+  --bs-gutter-x: 3rem;
+}
+@media screen and (min-width: 992px) {
+  .container {
+    --bs-gutter-x: 1.5rem;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+.container-max {
+  width: 100%;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.container-min {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.container-minx {
+  width: 100%;
+  max-width: var(--content-min-width);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#contents {
+  position: relative;
+  z-index: 10;
+}
+
+main {
+  margin: 0;
+}
+@media screen and (min-width: 992px) {
+  main {
+    margin: 0 30px;
+  }
+}
+
+#disp {
+  width: 100%;
+}
+
+#cursor {
+  position: fixed;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: #000;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+#cursor.active {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+#stalker {
+  position: fixed;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: var(--kc);
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  -webkit-transition: all 0.05s ease-in-out;
+  transition: all 0.05s ease-in-out;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 9999;
+}
+#stalker.active {
+  -webkit-transform: scale(2);
+          transform: scale(2);
+}
+
+.offcanvas {
+  opacity: 0;
+  z-index: 9999;
+}
+
+.offcanvas.show {
+  opacity: 1;
+}
+
+.offcanvas.offcanvas-end {
+  width: 100vw;
+  border-left: 0;
+}
+@media screen and (min-width: 992px) {
+  .offcanvas.offcanvas-end {
+    border-left: initial;
+  }
+}
+
+.offcanvas.offcanvas-top {
+  height: 100vh;
+  border-left: 0;
+}
+@media screen and (min-width: 992px) {
+  .offcanvas.offcanvas-top {
+    border-left: initial;
+  }
+}
+
+.offcanvas .btn-close {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0.8;
+}
+@media screen and (min-width: 992px) {
+  .offcanvas .btn-close {
+    right: 50px;
+  }
+}
+
+.offcanvas-header .g-header__logo-link-img {
+  max-width: 100px;
+  opacity: 0.5;
+}
+
+.fw-bold {
+  font-weight: 900 !important;
+}
+
+/*
+@import '../scss/global/loading';
+@import '../scss/global/layout';
+@import '../scss/global/header';
+@import '../scss/global/nav';
+@import '../scss/global/fixarea';
+
+@import '../scss/components/visual';
+*/

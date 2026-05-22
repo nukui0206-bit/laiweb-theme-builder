@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.c-marker {
+  display: inline;
+  position: relative;
+  background-image: linear-gradient(transparent 70%, #ffe600 70%);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 0 100%;
+  transition: all 1s ease-in-out;
+
+  &.is-active {
+    background-size: 100% 100%;
+  }
+}

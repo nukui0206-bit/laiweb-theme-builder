@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.c-em {
+  --color: #c00;
+
+  color: var(--color);
+  font-weight: bold;
+}

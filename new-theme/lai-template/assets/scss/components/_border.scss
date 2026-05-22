@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+.c-border {
+  --radius: 15px;
+  border-radius: var(--radius);
+}

@@ -1,0 +1,35 @@
+$U_PADDING_GAPS: -30, -15, 0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 80, 96, 120, 168, 200, 256;
+
+@media screen and (min-width: $breakpoint-lg) {
+  @each $gap in $U_PADDING_GAPS {
+    .u-pt-pc-#{$gap} {
+      padding-top: #{$gap}px !important;
+    }
+    .u-pl-pc-#{$gap} {
+      padding-left: #{$gap}px !important;
+    }
+    .u-pr-pc-#{$gap} {
+      padding-right: #{$gap}px !important;
+    }
+    .u-pb-pc-#{$gap} {
+      padding-bottom: #{$gap}px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  @each $gap in $U_PADDING_GAPS {
+    .u-pt-sp-#{$gap} {
+      padding-top: #{$gap}px !important;
+    }
+    .u-pl-sp-#{$gap} {
+      padding-left: #{$gap}px !important;
+    }
+    .u-pr-sp-#{$gap} {
+      padding-right: #{$gap}px !important;
+    }
+    .u-pb-sp-#{$gap} {
+      padding-bottom: #{$gap}px !important;
+    }
+  }
+}

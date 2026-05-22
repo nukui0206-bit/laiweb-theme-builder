@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+.c-faq {
+  &__inner {
+  }
+
+  &__item {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    padding: 12px 24px;
+
+    &-header {
+      //cursor: pointer;
+      position: relative;
+      text-align: left;
+
+      /*
+      &:after {
+        content: '\f055';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+      }
+
+      &[aria-expanded='true'] {
+        &:after {
+          content: '\f056';
+        }
+      }
+      */
+    }
+
+    &-ttl {
+      font-weight: bold;
+    }
+
+    &-body {
+      padding-right: 40px;
+      text-align: left;
+
+      &-txt {
+        padding: 20px;
+      }
+
+      p {
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  a {
+    color: var(--link);
+    text-decoration: underline;
+  }
+}

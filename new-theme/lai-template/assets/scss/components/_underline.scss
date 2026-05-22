@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.c-underline {
+  --height: 5px;
+  --bc: #fff;
+  display: inline-block;
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: var(--height);
+    background-color: var(--bc);
+    display: block;
+  }
+}

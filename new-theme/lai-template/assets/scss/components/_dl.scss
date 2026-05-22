@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+.c-dl {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+
+  dt,dd {
+    margin-bottom: 32px;
+  }
+
+  dt {
+    width: 20%;
+    color: $kc;
+    flex: 0 0 20%;
+    font-weight: bold;
+
+    @include is-mobile {
+      width: 100%;
+      flex: 0 0 100%;
+    }
+  }
+
+  dd {
+    width: 80%;
+    flex: 0 0 80%;
+
+    @include is-mobile {
+      width: 100%;
+      flex: 0 0 100%;
+    }
+  }
+}

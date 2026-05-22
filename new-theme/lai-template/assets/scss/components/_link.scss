@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+.c-link {
+  $this: &;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  a {
+    color: var(--fc);
+
+    &:hover {
+      color: var(--link);
+      text-decoration: none;
+    }
+  }
+
+  &.--underline {
+    border-bottom: 1px dashed rgba(#fff, 0.5);
+
+    &:hover {
+      border-bottom: 0;
+    }
+  }
+
+  &.--white {
+    color: #fff;
+
+    a {
+      color: #fff;
+    }
+  }
+
+  &.--kc {
+    color: var(--kc);
+
+    a {
+      color: var(--kc);
+    }
+  }
+
+  &.--sc {
+    color: var(--sc);
+    a {
+      color: var(--sc);
+    }
+  }
+
+  &.--ac {
+    color: var(--ac);
+    a {
+      color: var(--ac);
+    }
+  }
+
+  &.--fc {
+    color: var(--fc);
+    a {
+      color: var(--fc);
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+@import "../scss/utility/variable";
+@import "../scss/utility/mixin";
+@import '../scss/utility/media';
+@import "../scss/components/postcontent";
+
+#tinymce {
+  @include postContent();
+  width: auto !important;
+  font-size: 16px !important;
+  padding: 20px 46px !important;
+  .split {
+    > li,
+    > div,
+    > article {
+      border: 1px dashed #ddd;
+    }
+  }
+}

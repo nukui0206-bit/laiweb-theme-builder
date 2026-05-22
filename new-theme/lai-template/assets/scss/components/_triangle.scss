@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.c-triangle {
+  --bc: var(--kc);
+  --bottom: -40px;
+  --bottom-lg: -40px;
+  --border-width: 40px 40px 0 40px;
+
+  &:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: var(--border-width);
+    border-color: var(--bc) transparent transparent transparent;
+    position: absolute;
+    bottom: var(--bottom);
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 100;
+
+    @include is-break-lg {
+      bottom: var(--bottom-lg);
+    }
+  }
+}

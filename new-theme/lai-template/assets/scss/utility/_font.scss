@@ -1,0 +1,128 @@
+$U_P_GAPS: 10, 12, 14, 16, 18, 20, 22, 24, 28, 32, 34, 36, 40, 48, 56, 64, 72, 80, 96, 168;
+$U_LS_GAPS: 1, 2, 3, 4;
+$U_LH_GAPS: 1, 1.2, 1.5, 2;
+
+@media screen and (min-width: $breakpoint-lg) {
+  @each $gap in $U_P_GAPS {
+    .u-font-pc-#{$gap} {
+      @include fz(#{$gap}, '!important');
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  @each $gap in $U_P_GAPS {
+    .u-font-sp-#{$gap} {
+      @include fz(#{$gap}, '!important');
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+  @each $gap in $U_LS_GAPS {
+    .u-ls-pc-#{$gap} {
+      letter-spacing: #{$gap}px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  @each $gap in $U_LS_GAPS {
+    .u-ls-sp-#{$gap} {
+      letter-spacing: #{$gap}px !important;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+  @each $gap in $U_LH_GAPS {
+    $i: index($U_LH_GAPS, $gap);
+    .u-lh-pc-#{$i} {
+      line-height: #{$gap} !important;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  @each $gap in $U_LH_GAPS {
+    $i: index($U_LH_GAPS, $gap);
+    .u-lh-sp-#{$i} {
+      line-height: #{$gap} !important;
+    }
+  }
+}
+
+// ========================
+// フォント系
+// ========================
+
+.u-font-ff {
+  font-family: var(--ff);
+}
+
+.u-font-fm {
+  font-family: var(--fm);
+}
+
+.u-font-ori {
+  --family: var(--ff);
+  font-family: var(--family);
+}
+
+.u-font-color {
+  --color: var(--color);
+  color: var(--color);
+}
+
+.u-font-outline {
+  text-shadow: white 2px 0px, white -2px 0px, white 0px -2px, white 0px 2px, white 2px 2px, white -2px 2px,
+    white 2px -2px, white -2px -2px, white 1px 2px, white -1px 2px, white 1px -2px, white -1px -2px, white 2px 1px,
+    white -2px 1px, white 2px -1px, white -2px -1px;
+}
+
+.u-font-kc {
+  color: var(--kc);
+}
+
+.u-font-sc {
+  color: var(--sc);
+}
+
+.u-font-ac {
+  color: var(--ac);
+}
+
+.u-font-fc {
+  color: var(--fc);
+}
+
+.u-font-gold {
+  color: var(--gold);
+}
+
+.u-font-grad {
+  --start: var(--kc);
+  --end: var(--sc);
+
+  background: -webkit-linear-gradient(0deg, var(--start), var(--end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.u-font-bold {
+  --bold: 700;
+  font-weight: var(--bold);
+}
+
+//天地中央
+.u-font-cc {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: unset !important;
+  margin: auto;
+  text-align: center;
+  transform: translateY(-50%);
+  z-index: 1;
+}

@@ -1,0 +1,247 @@
+@charset "UTF-8";
+
+.c-after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  &__image {
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: 1;
+  }
+
+  &__video {
+    z-index: 1;
+
+    video {
+      width: 177.77777778vh; /* 16:9 の幅→16 ÷ 9＝ 177.77% */
+      height: 56.25vw; /* 16:9の幅 → 9 ÷ 16 = 56.25% */
+      min-height: 100%;
+      min-width: 100%;
+      //margin-top: 68px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      //filter: grayscale(1);
+    }
+  }
+
+  &__white {
+    background-color: rgba(#fff, 1);
+    z-index: 2;
+
+    @for $i from 1 through 9 {
+      &.--#{$i} {
+        background-color: rgba(#fff, ($i / 10));
+      }
+    }
+  }
+
+  &__black {
+    background-color: rgba(#000, 1);
+    z-index: 2;
+
+    @for $i from 1 through 9 {
+      &.--#{$i} {
+        background-color: rgba(#000, ($i / 10));
+      }
+    }
+  }
+
+  &__bc {
+    --background-color-rgb: var(--lightgray-rgb);
+
+    background-color: rgb(var(--background-color-rgb) / 1);
+    z-index: 2;
+
+    @for $i from 1 through 9 {
+      &.--#{$i} {
+        background-color: rgb(var(--background-color-rgb) / ($i / 10));
+      }
+    }
+  }
+
+  &__kc {
+    background-color: rgba(var(--kc-rgb), 1);
+    z-index: 2;
+
+    @for $i from 1 through 9 {
+      &.--#{$i} {
+        background-color: rgba(var(--kc-rgb), ($i / 10));
+      }
+    }
+  }
+
+  &__sc {
+    background-color: rgba(var(--sc-rgb), 1);
+    z-index: 2;
+
+    @for $i from 1 through 9 {
+      &.--#{$i} {
+        background-color: rgba(var(--sc-rgb), ($i / 10));
+      }
+    }
+  }
+
+  &__ac {
+    background-color: rgba(var(--ac-rgb), 1);
+    z-index: 2;
+
+    @for $i from 1 through 9 {
+      &.--#{$i} {
+        background-color: rgba(var(--ac-rgb), ($i / 10));
+      }
+    }
+  }
+
+  &__yc {
+    background-color: rgba(var(--yc-rgb), 1);
+    z-index: 2;
+
+    @for $i from 1 through 9 {
+      &.--#{$i} {
+        background-color: rgba(var(--yc-rgb), ($i / 10));
+      }
+    }
+  }
+
+  &__color {
+    --background-color: var(--kc);
+    background-color: var(--background-color);
+    z-index: 2;
+  }
+
+
+  &__color-rgb {
+    --background-color: var(--kc-rgb);
+    background-color: rgba(var(--background-color), 1);
+    z-index: 2;
+
+    @for $i from 1 through 9 {
+      &--#{$i} {
+        background-color: rgba(var(--background-color), ($i / 10));
+      }
+    }
+  }
+
+  &__fixed {
+    background-attachment: local;
+
+    @include is-break-lg {
+      background-attachment: fixed;
+    }
+  }
+
+  &__dots {
+    background-color: #fcfcfc;
+    background-image: radial-gradient(#ccc 10%, transparent 20%), radial-gradient(#ccc 10%, transparent 20%);
+    background-position: 0 0, 3px 3px;
+    background-size: 6px 6px;
+    z-index: 1;
+  }
+
+  &__dots2 {
+    background-color: #fff;
+    background-image: radial-gradient(#ccc 20%, transparent 20%), radial-gradient(#ccc 20%, transparent 20%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    opacity: 0.15;
+    z-index: 1;
+
+    &--kc {
+      background-image: radial-gradient(var(--kc) 20%, transparent 20%), radial-gradient(var(--kc) 20%, transparent 20%);
+    }
+
+    &--sc {
+      background-image: radial-gradient(var(--sc) 20%, transparent 20%), radial-gradient(var(--sc) 20%, transparent 20%);
+    }
+
+    &--ac {
+      background-image: radial-gradient(var(--ac) 20%, transparent 20%), radial-gradient(var(--ac) 20%, transparent 20%);
+    }
+  }
+
+  &__dig {
+    background-color: #ccc;
+    background-image: repeating-linear-gradient(-45deg, #fff, #fff 3px, transparent 0, transparent 6px);
+    opacity: 0.15;
+    z-index: 2;
+
+    &--kc {
+      background-color: var(--kc);
+    }
+
+    &--sc {
+      background-color: var(--sc);
+    }
+
+    &--ac {
+      background-color: var(--ac);
+    }
+  }
+
+  &__halftone {
+    box-shadow: 2px 2px 5px;
+    background: #fff;
+    opacity: 0.05;
+    filter: contrast(7);
+    z-index: 1;
+    --mask: linear-gradient(red, #{rgba(#000, 0.1)});
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: radial-gradient(#000, transparent) 0 0/ 1em 1em space;
+      -webkit-mask: var(--mask);
+      mask: var(--mask);
+      content: '';
+    }
+
+    &--noshadow {
+      box-shadow: none;
+    }
+  }
+
+  &__wire {
+    --z-index: 1;
+
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAAXNSR0IArs4c6QAAAClJREFUGFdjZECA/1AmI4gGEwwMDCBBFDaIgywI0/8frwROo+DakS0HAOUaCgXjR0uIAAAAAElFTkSuQmCC);
+    opacity: 0.3;
+    z-index: var(--z-index);
+  }
+
+  &__grad {
+    background-image: radial-gradient(rgba(#fff, 1) 50%, rgba(#ccc, 1));
+    z-index: 1;
+  }
+
+  &__grad-kc {
+    background-image: linear-gradient(0deg, rgba(#462508, 1), rgba(var(--kc-rgb), 1));
+    z-index: 2;
+  }
+
+  &__grad-fade {
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, #fff 100%);
+    z-index: 2;
+  }
+
+  &__lightgray {
+    background-color: #f2ece2;
+    z-index: 1;
+  }
+}

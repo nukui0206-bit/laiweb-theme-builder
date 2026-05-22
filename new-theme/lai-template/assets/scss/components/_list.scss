@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.c-list {
+  $this: &;
+  align-items: center;
+
+  &--inline {
+    display: flex;
+    align-items: center;
+  }
+}

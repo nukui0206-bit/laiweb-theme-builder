@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.g-gmap {
+  background: #eee;
+  line-height: 0;
+  filter: grayscale(100%);
+
+  iframe {
+    width: 100%;
+    height: calc(450px + 170px);
+    margin-top: -170px;
+  }
+}

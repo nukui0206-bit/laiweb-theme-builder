@@ -1,0 +1,35 @@
+$U_MARGIN_GAPS: -30, -15, 0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 80, 96, 128, 168;
+
+@media screen and (min-width: $breakpoint-lg) {
+  @each $gap in $U_MARGIN_GAPS {
+    .u-mt-pc-#{$gap} {
+      margin-top: #{$gap}px !important;
+    }
+    .u-ml-pc-#{$gap} {
+      margin-left: #{$gap}px !important;
+    }
+    .u-mr-pc-#{$gap} {
+      margin-right: #{$gap}px !important;
+    }
+    .u-mb-pc-#{$gap} {
+      margin-bottom: #{$gap}px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  @each $gap in $U_MARGIN_GAPS {
+    .u-mt-sp-#{$gap} {
+      margin-top: #{$gap}px !important;
+    }
+    .u-ml-sp-#{$gap} {
+      margin-left: #{$gap}px !important;
+    }
+    .u-mr-sp-#{$gap} {
+      margin-right: #{$gap}px !important;
+    }
+    .u-mb-sp-#{$gap} {
+      margin-bottom: #{$gap}px !important;
+    }
+  }
+}

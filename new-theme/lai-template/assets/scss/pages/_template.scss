@@ -1,0 +1,7 @@
+.single-template {
+  .c-section {
+    &:nth-child(odd) {
+      background-color: #fff;
+    }
+  }
+}

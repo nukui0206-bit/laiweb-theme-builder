@@ -1,0 +1,570 @@
+@charset "utf-8";
+
+/* ---------------------------------------------------
+ - loading
+----------------------------------------------------*/
+
+.g-loading-border {
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--kc-rgb), 1);
+  background-image: radial-gradient(circle farthest-corner at center, var(--kc) 0%, #021d4c 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10000;
+
+  &:after {
+    content: '';
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAAXNSR0IArs4c6QAAAClJREFUGFdjZECA/1AmI4gGEwwMDCBBFDaIgywI0/8frwROo+DakS0HAOUaCgXjR0uIAAAAAElFTkSuQmCC);
+    width: 100%;
+    display: block;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .g-loading-border__inner {
+    width: 60px;
+    position: relative;
+
+    span {
+      display: block;
+      bottom: 0px;
+      width: 9px;
+      height: 5px;
+      background: #fff;
+      position: absolute;
+      animation: loading-border 1.5s infinite ease-in-out;
+
+      &:nth-child(2) {
+        left: 11px;
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(3) {
+        left: 22px;
+        animation-delay: 0.4s;
+      }
+
+      &:nth-child(4) {
+        left: 33px;
+        animation-delay: 0.6s;
+      }
+
+      &:nth-child(5) {
+        left: 44px;
+        animation-delay: 0.8s;
+      }
+
+      @keyframes loading-border {
+        0% {
+          height: 5px;
+          transform: translateY(0px);
+          background: #fff;
+        }
+        25% {
+          height: 30px;
+          transform: translateY(15px);
+          background: var(--kc);
+        }
+        50% {
+          height: 5px;
+          transform: translateY(0px);
+          background: #fff;
+        }
+        100% {
+          height: 5px;
+          transform: translateY(0px);
+          background: #fff;
+        }
+      }
+    }
+  }
+
+  @keyframes loading {
+    from {
+      max-width: 0;
+    }
+  }
+}
+
+.g-loading-svg {
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--kc-rgb), 1);
+  background-image: radial-gradient(circle farthest-corner at center, var(--kc) 0%, #021d4c 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10000;
+
+  &:after {
+    content: '';
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAAXNSR0IArs4c6QAAAClJREFUGFdjZECA/1AmI4gGEwwMDCBBFDaIgywI0/8frwROo+DakS0HAOUaCgXjR0uIAAAAAElFTkSuQmCC);
+    width: 100%;
+    display: block;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .g-loading-svg__inner {
+    svg {
+      width: 100%;
+      max-width: 160px;
+    }
+  }
+
+  /*アニメーション前の指定*/
+  #loading-mask path {
+    fill-opacity: 0; /*最初は透過0で見えない状態*/
+    transition: fill-opacity 1s; /*カラーがつく際のアニメーション0.5秒で変化*/
+    fill: none; /*塗りがない状態*/
+    stroke: var(--ac); /*線の色*/
+  }
+
+  /*アニメーション後に.doneというクラス名がで付与された時の指定*/
+  #loading-mask.done path {
+    fill: var(--ac); /*塗りの色*/
+    fill-opacity: 1; /*透過1で見える状態*/
+    stroke: none; /*線の色なし*/
+  }
+}
+
+.g-loading {
+  width: 100%;
+  height: 100%;
+  background: rgba(#f5f3ee, 1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10000;
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .circles-loading:not(:required) {
+    position: relative;
+    text-indent: -9999px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 204, 51, 0.9);
+    border-radius: 100%;
+    animation: circles-loading 3s infinite ease-in-out;
+    transform-origin: 50% 100%;
+  }
+  .circles-loading:not(:required)::before {
+    background: rgba(255, 102, 0, 0.6);
+    border-radius: 100%;
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 18.75px;
+    left: -10.82532px;
+  }
+  .circles-loading:not(:required)::after {
+    background: rgba(255, 51, 0, 0.4);
+    border-radius: 100%;
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 18.75px;
+    left: 10.82532px;
+  }
+  @keyframes circles-loading {
+    0% {
+      -moz-transform: rotate(-720deg);
+      -ms-transform: rotate(-720deg);
+      -webkit-transform: rotate(-720deg);
+      transform: rotate(-720deg);
+    }
+    50% {
+      -moz-transform: rotate(720deg);
+      -ms-transform: rotate(720deg);
+      -webkit-transform: rotate(720deg);
+      transform: rotate(720deg);
+    }
+  }
+}
+
+.g-loading-type2 {
+  width: 100%;
+  height: 100%;
+  //background: rgba(#f5f3ee, 1);
+  background-image: radial-gradient(
+    circle farthest-corner at center,
+    var(--kc) 0%,
+    darken($kc, 10%) 100%
+  );
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10000;
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__disp {
+    position: absolute;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    perspective: 800px;
+  }
+
+  .inner {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  .inner.one {
+    left: 0%;
+    top: 0%;
+    animation: rotate-one 1s linear infinite;
+    border-bottom: 3px solid #efeffa;
+  }
+
+  .inner.two {
+    right: 0%;
+    top: 0%;
+    animation: rotate-two 1s linear infinite;
+    border-right: 3px solid #efeffa;
+  }
+
+  .inner.three {
+    right: 0%;
+    bottom: 0%;
+    animation: rotate-three 1s linear infinite;
+    border-top: 3px solid #efeffa;
+  }
+
+  @keyframes rotate-one {
+    0% {
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes rotate-two {
+    0% {
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes rotate-three {
+    0% {
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+  }
+}
+
+.g-loading-type3 {
+  width: 100%;
+  height: 100%;
+  //background: rgba(#f5f3ee, 1);
+  background-image: radial-gradient(
+    circle farthest-corner at center,
+    var(--kc) 0%,
+    darken($kc, 10%) 100%
+  );
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10000;
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__disp {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+
+    .inner {
+      color: #fff;
+      font-size: 10px;
+      margin: auto;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      position: relative;
+      text-indent: -9999em;
+      animation: ani-cycle 1.3s infinite linear;
+      transform: translateZ(0);
+    }
+  }
+
+  @keyframes ani-cycle {
+    0%,
+    100% {
+      box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+        -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+    12.5% {
+      box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em,
+        -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    25% {
+      box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em,
+        -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    37.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em,
+        -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em,
+        -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0,
+        -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+      box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+        -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+      box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+        -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+  }
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+
+  .preloader-before,
+  .preloader-after {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    //background-color: var(--kc);
+    //background-image: linear-gradient(90deg, rgba(var(--kc-rgb), 1) 0%, rgba(var(--sc-rgb), 1) 33%, rgba(var(--ac-rgb), 1) 100%);
+    background-image: linear-gradient(
+      90deg,
+      rgba(var(--scd-rgb), 1) 0%,
+      rgba(var(--sc-rgb), 1) 33%,
+      rgba(var(--scd-rgb), 1) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    //background-image: url(../img/common/texture03.png);
+    //background-image: linear-gradient(90deg, rgba(var(--kc-rgb), 1) 0%, rgba(var(--sc-rgb), 1) 33%, rgba(var(--ac-rgb), 1) 100%);
+    //background-size: 100px 100px;
+    //background-repeat: repeat;
+    opacity: 1;
+  }
+
+  .preloader-before {
+    top: 0;
+  }
+
+  .preloader-after {
+    bottom: 0;
+  }
+
+  .preloader-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: 100%;
+
+    .title {
+      position: absolute;
+      left: 0;
+      bottom: calc(50% + 16px);
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+      font-size: 25px;
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      color: #fff;
+
+      img {
+        max-width: 320px;
+
+        &.--white {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+
+    .percent {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      font-weight: 700;
+      letter-spacing: 8px;
+      font-size: 24vw;
+      font-family: 'Times New Roman', Times, serif;
+      color: rgba(#fff, 0.3);
+      z-index: 1;
+    }
+
+    .loading {
+      position: absolute;
+      top: calc(50% + 16px);
+      left: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      color: #fff;
+      -webkit-animation: blink-animation 2.2s linear infinite;
+    }
+  }
+
+  .preloader-bar {
+    position: absolute;
+    z-index: 2;
+    top: calc(50% - 1px);
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--kc);
+
+    .preloader-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: auto;
+      height: 100%;
+      width: 0;
+      background: #fff;
+    }
+  }
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 0;
+  }
+}
+
+/*アニメーション前の指定*/
+#g-loading-svg path {
+  fill-opacity: 0; /*最初は透過0で見えない状態*/
+  transition: fill-opacity 1s; /*カラーがつく際のアニメーション0.5秒で変化*/
+  fill: none; /*塗りがない状態*/
+  stroke: var(--ac); /*線の色*/
+}
+
+/*アニメーション後に.doneというクラス名がで付与された時の指定*/
+#g-loading-svg.done path {
+  fill: var(--ac); /*塗りの色*/
+  fill-opacity: 1; /*透過1で見える状態*/
+  stroke: none; /*線の色なし*/
+}

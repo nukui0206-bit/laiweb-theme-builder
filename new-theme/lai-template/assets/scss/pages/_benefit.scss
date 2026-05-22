@@ -1,0 +1,13 @@
+.p-benefit {
+  .c-numbering__panel {
+    &:before {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 160px;
+      font-family: fantasy;
+      color: rgba(#000, 0.05);
+      line-height: 1;
+    }
+  }
+}

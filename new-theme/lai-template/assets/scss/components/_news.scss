@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.c-news-list {
+  $this: &;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__item {
+    max-width: 100%;
+    flex: 0 0 100%;
+
+    &-link {
+      background-color: #fff;
+      display: block;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+  }
+}

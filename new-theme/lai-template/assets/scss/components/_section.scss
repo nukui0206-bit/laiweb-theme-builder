@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+.c-section {
+  --z-index: 1;
+
+  background-color: #fff;
+  padding: 32px 0;
+  position: relative;
+  z-index: var(--z-index);
+
+  @include is-break-lg {
+    padding: 64px 0;
+  }
+
+  &:nth-child(odd) {
+    background-color: #f1f5f9;
+  }
+
+  > * {
+    position: relative;
+    z-index: 20;
+  }
+
+  &--trans {
+    background-color: transparent !important;
+  }
+
+  &--white {
+    background-color: #fff !important;
+  }
+
+  &--dark {
+    background-color: darken($fc, 3%) !important;
+  }
+
+  &--gray {
+    background-color: #f5f5f5 !important;
+  }
+
+  &--black {
+    background-color: #000 !important;
+  }
+
+  &--image {
+    --height: 500px;
+    min-height: var(--height);
+  }
+
+  &--non {
+    padding: 0;
+  }
+
+  &--wide {
+    margin-left: 0;
+    margin-right: 0;
+
+    @include is-break-lg {
+      margin-left: -30px;
+      margin-right: -30px;
+    }
+  }
+
+  &--line {
+    min-height: 64px;
+    background-color: $black;
+  }
+
+  &.--right-radius-bg {
+    &:before {
+      content: '';
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAAXNSR0IArs4c6QAAAClJREFUGFdjZECA/1AmI4gGEwwMDCBBFDaIgywI0/8frwROo+DakS0HAOUaCgXjR0uIAAAAAElFTkSuQmCC);
+      border-top-right-radius: 60px;
+      display: block;
+      opacity: 0.3;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+
+      @media screen and (min-width: 1400px) {
+        border-top-right-radius: 100px;
+        right: 8vw;
+      }
+    }
+
+    &:after {
+      content: '';
+      background-color: var(--kc);
+      border-top-right-radius: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      @media screen and (min-width: 1400px) {
+        border-top-right-radius: 100px;
+        right: 8vw;
+      }
+    }
+  }
+
+  &.--left-radius {
+    --background-color: var(--bc);
+
+    &:after {
+      content: '';
+      border-top-left-radius: 60px;
+      background-color: var(--background-color);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
+
+      @media screen and (min-width: 1400px) {
+        border-top-left-radius: 100px;
+        left: 8vw;
+      }
+    }
+  }
+
+  &.--right-radius {
+    --background-color: var(--bc);
+
+    &:after {
+      content: '';
+      border-top-right-radius: 60px;
+      background-color: var(--background-color);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
+
+      @media screen and (min-width: 1400px) {
+        border-top-right-radius: 100px;
+        right: 8vw;
+      }
+    }
+  }
+}

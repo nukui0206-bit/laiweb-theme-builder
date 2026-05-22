@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.c-bodyline {
+  $this: &;
+  text-align: left;
+
+  @include is-mobile {
+    margin-bottom: 10px;
+  }
+
+  &__ttl {
+    @include fz(48);
+    font-weight: 600;
+    font-family: $ff;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+    position: relative;
+
+    @include is-mobile {
+      @include fz(24);
+    }
+  }
+
+  &__sttl {
+    @include fz(24);
+    font-weight: 600;
+    font-family: $ff;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+
+    @include is-mobile {
+      @include fz(18);
+    }
+
+    span {
+      background-color: #fff;
+      display: inline-block;
+      padding-right: 10px;
+    }
+  }
+
+  &__read {
+    @include fz(16);
+    letter-spacing: 0.05em;
+    line-height: 2;
+
+    @include is-mobile {
+      @include fz(14);
+    }
+  }
+}

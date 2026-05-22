@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.c-box {
+  --bg-color: var(--kc);
+  --padding: 40px;
+
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  padding: calc(var(--padding) / 2);
+  overflow: hidden;
+  position: relative;
+
+  @include is-break-lg {
+    padding: var(--padding);
+  }
+}
+
+.c-box-border {
+  background-color: rgba(#fff, 0.72);
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 20px;
+
+  @include is-break-lg {
+    padding: 20px;
+  }
+}
+

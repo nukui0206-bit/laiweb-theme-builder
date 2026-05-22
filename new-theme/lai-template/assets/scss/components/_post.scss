@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+/* ---------------------------------------------------
+ - post
+----------------------------------------------------*/
+
+.post-content {
+  @include postContent();
+}
+
+.single {
+  .post-content {
+    @include is-break-lg {
+      width: 100%;
+    }
+  }
+
+  .section {
+    .image {
+      .caption {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .table2 {
+    @include fz(14);
+    td,
+    th {
+      vertical-align: middle;
+    }
+  }
+}
+
+.post-thum {
+  margin-bottom: 40px;
+  img {
+    height: auto;
+  }
+}
+
+.post-cta {
+  background-position: center !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+  .inner {
+    position: relative;
+    z-index: 10;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  ul {
+    padding: 20px;
+  }
+
+  li {
+    font-weight: bold;
+  }
+
+  .title {
+    margin-bottom: 30px;
+  }
+
+  .image {
+    background: none;
+  }
+}

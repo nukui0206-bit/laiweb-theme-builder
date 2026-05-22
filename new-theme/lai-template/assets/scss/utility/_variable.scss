@@ -1,0 +1,134 @@
+// ========================
+// 変数定義
+// ========================
+
+//$ff: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+//$fm: 'EB Garamond', 'Noto Serif JP', '游明朝', 'YuMincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'Sawarabi Mincho', 'HG明朝E', Meiryo, serif;
+
+/*
+:root{
+  --fa-style-family-classic:"Font Awesome 6 Pro";
+  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro"
+}
+
+
+@font-face{
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src:url(/cms/design/themes/doc/assets/fonts/webfonts/fa-thin-100.woff2) format("woff2"),
+  url(/cms/design/themes/doc/assets/fonts/webfonts/fa-thin-100.ttf) format("truetype")
+}
+.fa-thin,
+.fat{
+  font-family: 'Font Awesome 6 Pro';
+  font-weight: 100;
+}
+*/
+
+/*
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 400;
+  font-display:swap;
+  src: url('/cms/design/themes/doc/assets/fonts/NotoSansJP-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 700;
+  font-display:swap;
+  src: url('/cms/design/themes/doc/assets/fonts/NotoSansJP-Bold.otf') format('opentype');
+}
+*/
+
+.wf-tsuku {
+  font-family: "fot-tsukuaoldmin-pr6n", sans-serif;
+  font-weight: 300 !important;
+  font-style: normal;
+  font-display: swap;
+}
+
+.wf-montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-display: swap;
+}
+
+// SCSS変数
+$fc: #1e1a1d;
+$kc: #82a8ce;
+$kcd: #5d86ae;
+$sc: #eaf7ff;
+$ac: #fec20d;
+$yc: #f1f02f;
+//$bc: #fafaf1;
+//$bc: #fffaf0;
+$bc: #1e1a1d;
+$link: $fc;
+$link-w: #fff;
+$black: #07111e;
+$gold: #a09319;
+$darkgray: #444;
+$lightgray: #F2F2F2;
+$gray: #eee;
+$line: #00c306;
+$facebook: #3b5998;
+$twitter: #00aced;
+$googleplus: #dd4b39;
+$hatena: #00a4de;
+$instagram: #cf2f91;
+
+
+// CSSカスタムプロパティ
+:root {
+  --ff: Noto Sans JP, 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  //--fm: 'EB Garamond', 'Noto Serif JP', '游明朝', 'YuMincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'Sawarabi Mincho', 'HG明朝E', 'Meiryo', serif;
+  --fm: '游明朝', 'YuMincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'Sawarabi Mincho', 'HG明朝E', Meiryo, serif;
+
+  --fc: #{$fc};
+  --kc: #{$kc};
+  --kcd: #{$kcd};
+  --sc: #{$sc};
+  --ac: #{$ac};
+  --yc: #{$yc};
+  --bc: #{$bc};
+  --link: #{$link};
+  --link-w: #{$link-w};
+  --black: #{$black};
+  --gold: #{$gold};
+  --darkgray: #{$darkgray};
+  --lightgray: #{$lightgray};
+  --gray: #{$gray};
+
+  --line: #{$line};
+  --facebook: #{$facebook};
+  --twitter: #{$twitter};
+  --googleplus: #{$googleplus};
+  --hatena: #{$hatena};
+  --instagram: #{$instagram};
+
+  --fc-rgb: #{red($fc)},#{green($fc)},#{blue($fc)};
+  --kc-rgb: #{red($kc)},#{green($kc)},#{blue($kc)};
+  --kcd-rgb: #{red($kcd)},#{green($kcd)},#{blue($kcd)};
+  --sc-rgb: #{red($sc)},#{green($sc)},#{blue($sc)};
+  --ac-rgb: #{red($ac)},#{green($ac)},#{blue($ac)};
+  --yc-rgb: #{red($yc)},#{green($yc)},#{blue($yc)};
+  --bc-rgb: #{red($bc)},#{green($bc)},#{blue($bc)};
+  --link-rgb: #{red($link)},#{green($link)},#{blue($link)};
+  --line-rgb: #{red($line)},#{green($line)},#{blue($line)};
+  --black-rgb: #{red($black)},#{green($black)},#{blue($black)};
+  --gold-rgb: #{red($gold)},#{green($gold)},#{blue($gold)};
+  --darkgray-rgb: #{red($darkgray)},#{green($darkgray)},#{blue($darkgray)};
+  --lightgray-rgb: #{red($lightgray)},#{green($lightgray)},#{blue($lightgray)};
+  --gray-rgb: #{red($gray)},#{green($gray)},#{blue($gray)};
+
+  --outer-width: 1280px;
+  --content-width: 940px;
+  --content-min-width: 640px;
+}
+
+

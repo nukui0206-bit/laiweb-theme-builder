@@ -1,0 +1,30 @@
+@use "sass:math";
+
+// Mixin
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin fz($size: 14, $important: '') {
+  font-size: $size + px + $important;
+  font-size: math.div($size , 10) + rem + $important;
+}
+
+@function get_vw($size, $viewport: $breakpoint-lg-size){
+  $rate: math.div(100, $viewport);
+  @return $rate * $size * 1vw;
+}
+
+@mixin fz_vw($font_size:10){
+  font-size: $font_size * 1px;
+  font-size: get_vw($font_size);
+}
+
+@mixin ls($size: 0, $base: 16) {
+  letter-spacing: $size + px;
+  letter-spacing: math.div($size , ($base * 0.625)) + rem;
+}

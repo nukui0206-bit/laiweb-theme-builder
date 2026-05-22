@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.c-numbering {
+  $this: &;
+  counter-reset: number 0;
+
+  &__panel {
+    &:before {
+      counter-increment: number 1;
+      content: counter(number, decimal-leading-zero) ' ';
+    }
+
+    &.--reason {
+      &:before {
+        @include fz(24);
+        width: 80px;
+        height: 80px;
+        background-color: #0f94c2;
+        border-radius: 100%;
+        color: #fff;
+        display: flex;
+        font-weight: 700;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+        position: absolute;
+        top: -40px;
+        left: 0;
+        right: 0;
+        z-index: 10;
+      }
+
+      .c-box {
+        padding: 60px 40px 40px;
+      }
+    }
+  }
+}

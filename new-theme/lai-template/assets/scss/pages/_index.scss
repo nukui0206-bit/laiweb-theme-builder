@@ -1,0 +1,26 @@
+.c-after__grad-kc {
+  height: 60%;
+  opacity: 0.6;
+}
+
+.p-index-greeting {
+  .container {
+    @include is-mobile {
+      background-color: rgba(#fff, 0.72);
+      padding: 20px;
+    }
+  }
+}
+
+.p-index-imgp {
+  &--1 {
+    position: absolute;
+    top: -40px;
+    max-width: 200px;
+    right: 0;
+
+    @include is-mobile {
+      max-width: 100px;
+    }
+  }
+}

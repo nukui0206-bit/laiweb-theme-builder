@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.c-step {
+  .nav-step {
+    margin-bottom: 64px;
+
+    li {
+      padding: 0px 20px;
+      position: relative;
+
+      span {
+        @include fz(16);
+        display: block;
+        border: 1px solid #f5f5f5;
+        padding: 10px 20px;
+      }
+
+      &.is-active {
+        span {
+          background: var(--kc);
+          color: #fff;
+        }
+      }
+
+      &:after {
+        content: '\f105';
+        @include fz(24);
+        color: var(--kc);
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        line-height: 0;
+        position: absolute;
+        top: 50%;
+        right: -6px;
+      }
+
+      &:last-child {
+        &:after {
+          content: '';
+        }
+      }
+
+    }
+  }
+}

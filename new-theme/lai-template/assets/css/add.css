@@ -1,0 +1,210 @@
+@charset "UTF-8";
+/* 料金プラン */
+.pricing-section {
+    padding: 50px 0;
+    background-color: #f7f7f7;
+}
+
+.pricing-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: relative;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-header {
+    background-color: #005bac;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 20px 0;
+    position: relative;
+}
+
+.pricing-plan {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.pricing-price {
+    font-size: 28px;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #fff; /* ここを修正 */
+    background-color: #005bac; /* 背景色を追加 */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.pricing-description {
+    margin: 15px 0;
+    font-weight: bold;
+    color: #555;
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 20px 0;
+}
+
+.pricing-features li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.pricing-features li::before {
+    content: '✓';
+    color: #005bac;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.btn-primary {
+    background-color: #005bac;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #2c45b0;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4b4b;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 料金プラン全体の調整 */
+.pricing-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pricing-container .pricing-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+/* 問題提起ボックスのスタイル */
+.c-box-border {
+  background-color: #fff;
+  border: 5px solid var(--scd);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+/* ここからアニメーション用のCSS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.c-box-border h2 {
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+
+/* アイコンのスタイル */
+.fa-check-circle {
+  color: #008000; /* アイコンの色を緑に設定 */
+  margin-right: 10px; /* アイコンとテキストの間隔を調整 */
+}
+/* フッター部分 */
+.company-link i {
+    margin-left: 5px; /* アイコンとテキストの間隔 */
+    color: #ffffff; /* アイコンの色 */
+    font-size: 0.8em; /* アイコンのサイズ */
+}
+.g-pagetop a{background: #005bac;}
+
+/* CTA部分 */
+.c-btn--contact {
+    background: linear-gradient(to bottom, #ff7e00, #e06800) !important; /* 例えば、オレンジ系のグラデーション */
+}
+/* よくある質問 */
+.p-common-texture:after{background: #b8ddff;}
+/* トップお知らせコンテンツ */
+.c-headline-compact .c-headline-compact__ttl::first-letter {
+  color: #005bac;
+}
+/* トップ選ばれる理由 */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.stylish-btn {
+  background-color: #ff6347;
+  color: #fff;
+  border: 2px solid #ff6347;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+
+.stylish-btn:hover {
+  background-color: #fff;
+  color: #ff6347;
+}
+/* お問合せフォーム */
+.p-contact .g-form{border: 3px dashed #005bac;}
+
+/* サイトマップ */
+.c-sitemap .nav-item a{
+background-color: #005bac;
+border: 1px solid #333333;
+color: #ffffff;
+}
+.c-sitemap .nav-item a:after{background-image: none;}
+.c-sitemap .nav-item a .c-btn-simple__icon, .c-sitemap .nav-item a i{color: #ffffff;}
+/* ナビメニュー */
+.g-nav .lower{position: fixed;}

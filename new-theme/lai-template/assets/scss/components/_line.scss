@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.c-line {
+  $this: &;
+
+  &--white {
+    background-color: #fff;
+    padding: 2px 6px;
+  }
+}
