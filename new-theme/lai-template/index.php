@@ -134,6 +134,9 @@
 
 
 
+    <?php get_template_part('include/top-sections/latest-posts'); ?>
+
+    <?php if (false) : ?>
     <section class="c-section c-section--wide c-section--white c-hover --flash p-common-news u-pt-pc-120 u-pt-sp-64">
       <div class="container">
         <div class="row justify-content-center gx-4 gx-lg-5">
@@ -351,6 +354,7 @@
       </div>
       <div class="c-after c-after__bc --8" style="--bc-rgb: 234 247 255; clip-path: polygon(85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%, 0% 0%);"></div>
     </section>
+    <?php endif; ?>
 
 
 

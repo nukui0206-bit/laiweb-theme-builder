@@ -155,6 +155,22 @@ lai_template_can_show_content_module($key)
 既存サイトの表示を壊さないため、既存index.phpのハードコード部分は段階的に移行する。
 ```
 
+## 初期トップページ部品
+
+`include/top-sections/latest-posts.php` を追加し、NEWS/COLUMN/CASE の新着一覧を1つの共通部品として扱う。
+
+仕様:
+
+```text
+news / column / case のうち、初期設定でONかつ投稿タイプが存在するものだけ表示する
+1件種だけONなら1カラム
+2件種ONなら2カラム
+3件種ONなら従来通り3カラム
+既存の見た目に近いHTML構造を維持する
+```
+
+現在の `laiwebcms.com` では `content_type` が `お知らせ / お客様の声 / よくある質問` のため、トップの新着部品では NEWS のみ表示される。
+
 ## 初期レジストリ案
 
 ```text
