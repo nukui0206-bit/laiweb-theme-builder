@@ -155,6 +155,32 @@ lai_template_can_show_content_module($key)
 既存サイトの表示を壊さないため、既存index.phpのハードコード部分は段階的に移行する。
 ```
 
+## トップページ表示セクション設定
+
+`function/top-sections.php` でACFローカルフィールドを追加する。
+
+追加先:
+
+```text
+初期設定: theme-general-settings
+```
+
+フィールド:
+
+```text
+top_sections: トップページ表示セクション
+```
+
+初期選択肢:
+
+```text
+latest-posts: 新着一覧
+voice: お客様の声
+faq: よくある質問
+```
+
+保存値がない場合は、既存表示を維持するため `latest-posts / voice / faq` をデフォルトで有効にする。
+
 ## 初期トップページ部品
 
 `include/top-sections/latest-posts.php` を追加し、NEWS/COLUMN/CASE の新着一覧を1つの共通部品として扱う。
