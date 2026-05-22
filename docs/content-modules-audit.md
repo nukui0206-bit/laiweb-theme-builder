@@ -171,6 +171,16 @@ news / column / case のうち、初期設定でONかつ投稿タイプが存在
 
 現在の `laiwebcms.com` では `content_type` が `お知らせ / お客様の声 / よくある質問` のため、トップの新着部品では NEWS のみ表示される。
 
+追加トップページ部品:
+
+```text
+include/top-sections/voice.php
+お客様の声を最大3件表示する。公開投稿が0件の場合は非表示。
+
+include/top-sections/faq.php
+よくある質問を最大5件表示する。公開投稿が0件の場合は非表示。
+```
+
 ## 初期レジストリ案
 
 ```text

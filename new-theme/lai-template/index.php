@@ -135,6 +135,8 @@
 
 
     <?php get_template_part('include/top-sections/latest-posts'); ?>
+    <?php get_template_part('include/top-sections/voice'); ?>
+    <?php get_template_part('include/top-sections/faq'); ?>
 
     <?php if (false) : ?>
     <section class="c-section c-section--wide c-section--white c-hover --flash p-common-news u-pt-pc-120 u-pt-sp-64">
