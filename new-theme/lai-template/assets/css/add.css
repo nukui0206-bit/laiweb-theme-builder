@@ -208,3 +208,226 @@ color: #ffffff;
 .c-sitemap .nav-item a .c-btn-simple__icon, .c-sitemap .nav-item a i{color: #ffffff;}
 /* ナビメニュー */
 .g-nav .lower{position: fixed;}
+
+/* ==========================================================================
+ * Phase 3.1: Header layout adjustments (laiweb / town / clinic + hamburger)
+ *   _header.scss に未定義のクラスを補強し、3 レイアウト共通で見た目を整える
+ * ========================================================================== */
+
+/* --- ハンバーガーボタン共通スタイル --- */
+.g-header__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--kc, #333);
+  border: 1px solid transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.g-header__nav-btn:hover {
+  background-color: var(--ac, #555);
+  transform: scale(1.05);
+}
+
+.g-header__nav-btn .popup {
+  width: 22px;
+  height: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+.g-header__nav-btn .popup .open,
+.g-header__nav-btn .popup .close {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.g-header__nav-btn .popup .open {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.g-header__nav-btn .popup .open > div {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.g-header__nav-btn .popup .close {
+  display: none;
+}
+
+.g-header__nav-btn .popup .close > div {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+}
+
+.g-header__nav-btn .popup .close > div:first-child > div,
+.g-header__nav-btn .popup .close > div:last-child > div {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 1px;
+}
+
+.g-header__nav-btn .popup .close > div:first-child {
+  transform: rotate(45deg);
+}
+
+.g-header__nav-btn .popup .close > div:last-child {
+  transform: rotate(-45deg);
+}
+
+/* リッチ系の枠線バリエーション（town レイアウトの linedeg クラス対応） */
+.g-header__nav-btn.--linedeg {
+  background: linear-gradient(135deg, var(--kc, #333) 0%, var(--sc, #666) 100%);
+}
+
+/* --- town レイアウト固有 --- */
+.g-header__read {
+  font-size: 11px;
+  color: #555;
+  margin: 0 0 4px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+@media (max-width: 991.98px) {
+  .g-header__read {
+    display: none;
+  }
+}
+
+.g-header .u-bg-ori {
+  background-color: var(--bg, #f5f5f5);
+  border-radius: 6px;
+}
+
+.g-header .number[data-action="call"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.g-header .number[data-action="call"] i {
+  font-size: 1.4em;
+}
+
+/* SP用メール無料相談ボタン（town レイアウト） */
+.g-header__nav-sp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 8px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  background-color: var(--ac, #ff9800);
+  color: #fff !important;
+  text-decoration: none;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.g-header__nav-sp-btn i {
+  margin-right: 4px;
+}
+
+/* --- clinic レイアウト固有 --- */
+/* 中央ロゴ + 下段ナビ + 固定予約ボタンの構成 */
+.g-header > .container-fluid > .row.justify-content-center > .g-header__inner {
+  flex: 0 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.g-header > .container-fluid > .row.justify-content-center > .g-header__inner .g-header__logo-link-img {
+  max-height: 48px;
+  width: auto;
+}
+
+/* clinic 内のナビ行 */
+.g-header > .container-fluid > .row.justify-content-center > .col-12.d-none.d-lg-block {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 8px 0;
+}
+
+/* 画面右側に固定する縦書き予約ボタン */
+.g-header__resv {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  background-color: var(--ac, #ff9800);
+  color: #fff !important;
+  padding: 20px 10px;
+  text-decoration: none;
+  border-radius: 8px 0 0 8px;
+  z-index: 100;
+  font-weight: 700;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, padding-right 0.2s ease;
+}
+
+.g-header__resv .ttl {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+
+.g-header__resv .ttl i {
+  font-size: 1.2em;
+  writing-mode: horizontal-tb;
+}
+
+.g-header__resv:hover {
+  background-color: var(--kc, #333);
+  color: #fff !important;
+  padding-right: 14px;
+}
+
+@media (max-width: 767.98px) {
+  .g-header__resv {
+    padding: 14px 8px;
+  }
+  .g-header__resv .ttl {
+    font-size: 11px;
+  }
+}
+
+/* --- レスポンシブ補強（全レイアウト共通） --- */
+@media (max-width: 991.98px) {
+  .g-header__nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .g-header__nav-btn .popup {
+    width: 20px;
+    height: 14px;
+  }
+}
