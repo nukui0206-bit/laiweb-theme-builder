@@ -581,11 +581,15 @@ card: 画像付きカード型
 作業:
 
 ```text
-primary_color
-secondary_color
-accent_color
-text_color
-line_color
+theme_primary_color: メインカラー
+theme_primary_dark_color: メインカラー濃色
+theme_secondary_color: サブカラー
+theme_secondary_dark_color: サブカラー濃色
+theme_accent_color: アクセントカラー
+theme_accent_dark_color: アクセントカラー濃色
+theme_text_color: 基本文字色
+theme_base_color: ベース濃色
+theme_line_color: LINEカラー
 ```
 
 出力方法:
@@ -593,11 +597,25 @@ line_color
 ```php
 <style>
 :root {
-  --kc: ...;
-  --sc: ...;
-  --ac: ...;
+  --kc: ...;      /* main */
+  --kcd: ...;     /* main dark */
+  --sc: ...;      /* secondary */
+  --scd: ...;     /* secondary dark */
+  --ac: ...;      /* accent */
+  --acd: ...;     /* accent dark */
+  --fc: ...;      /* text */
+  --bc: ...;      /* base dark */
+  --line: ...;
 }
 </style>
+```
+
+実装方針:
+
+```text
+Sassの既存変数を直接変更せず、style.css読み込み後にCSSカスタムプロパティを上書きする。
+RGB派生値（--kc-rgb等）もPHP側で同時に出力する。
+細かいデザインパターン調整は後半のデザイン整理フェーズで行う。
 ```
 
 注意:

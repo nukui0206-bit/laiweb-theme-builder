@@ -21,6 +21,7 @@ require_once('function/top-sections.php');
 require_once('function/cta.php');
 require_once('function/loading.php');
 require_once('function/footer.php');
+require_once('function/design-colors.php');
 
 // リライトルール追加
 function wmp_rewrite_rule()

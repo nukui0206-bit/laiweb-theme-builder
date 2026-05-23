@@ -26,6 +26,7 @@ require_once(SLIB_DIR . '/lib/wmp-global.php');
     <link rel="stylesheet" href="<?= home_url(); ?>/scripts.php?css=js/vegas/vegas.min.css">
   <?php endif; ?>
   <?= get_css('/assets/css/style.css'); ?>
+  <?php get_template_part('include/design-colors'); ?>
   <?php  get_css('/assets/css/add.css'); 
   ?>
   <?= get_js('/assets/js/slick.min.js', false); ?>
