@@ -189,10 +189,41 @@ faq: よくある質問
 
 ```text
 news / column / case のうち、初期設定でONかつ投稿タイプが存在するものだけ表示する
+新着一覧内で表示するコンテンツを latest_posts_modules で選択する
+各コンテンツの表示件数を latest_posts_count で選択する
 1件種だけONなら1カラム
 2件種ONなら2カラム
 3件種ONなら従来通り3カラム
 既存の見た目に近いHTML構造を維持する
+```
+
+表示形式:
+
+```text
+latest_posts_layout: split
+既存デザインに近い分割型。デフォルト値。
+
+latest_posts_layout: list
+日付とタイトル中心の一覧型。
+
+latest_posts_layout: card
+画像付きカード型。
+```
+
+実装ファイル:
+
+```text
+include/top-sections/latest-posts.php
+選択された表示形式を読み込むディスパッチャー。
+
+include/top-sections/latest-posts/split.php
+既存デザインに近い分割型。
+
+include/top-sections/latest-posts/list.php
+一覧型。
+
+include/top-sections/latest-posts/card.php
+カード型。
 ```
 
 現在の `laiwebcms.com` では `content_type` が `お知らせ / お客様の声 / よくある質問` のため、トップの新着部品では NEWS のみ表示される。
