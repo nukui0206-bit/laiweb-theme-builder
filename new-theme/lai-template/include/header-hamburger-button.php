@@ -5,6 +5,5 @@
       <span class="lai-header-hamburger-btn__line"></span>
       <span class="lai-header-hamburger-btn__line"></span>
     </span>
-    <span class="lai-header-hamburger-btn__label">MENU</span>
   </button>
 <?php endif; ?>

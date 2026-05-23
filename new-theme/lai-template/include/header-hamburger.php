@@ -1,25 +1,40 @@
 <style>
   .lai-header-hamburger-btn {
-    width: 74px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.92);
+    width: 58px;
+    height: 58px;
+    background: rgba(255, 255, 255, 0.94);
     border: 1px solid rgba(var(--kc-rgb), 0.24);
-    border-radius: 999px;
+    border-radius: 50%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
     padding: 0;
     position: relative;
     z-index: 130;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    overflow: hidden;
+    transition: background-color 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
+  }
+
+  .lai-header-hamburger-btn:before {
+    content: '';
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, rgba(var(--kc-rgb), 0.18), rgba(var(--sc-rgb), 0.34));
+    position: absolute;
+    inset: -8px;
+    transform: translateX(-66%) rotate(-18deg);
+    transition: transform 0.36s ease;
   }
 
   .lai-header-hamburger-btn:hover {
-    background: var(--kc);
-    box-shadow: 0 14px 34px rgba(var(--kc-rgb), 0.3);
+    background: #fff;
+    border-color: rgba(var(--kc-rgb), 0.46);
+    box-shadow: 0 16px 38px rgba(var(--kc-rgb), 0.28);
     transform: translateY(-1px);
+  }
+
+  .lai-header-hamburger-btn:hover:before {
+    transform: translateX(18%) rotate(-18deg);
   }
 
   .lai-header-hamburger-btn:focus {
@@ -27,37 +42,74 @@
   }
 
   .lai-header-hamburger-btn__icon {
-    width: 24px;
-    height: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 28px;
+    height: 28px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    transform: rotate(-14deg);
+    transition: transform 0.3s ease;
   }
 
   .lai-header-hamburger-btn__line {
-    width: 24px;
+    width: 28px;
     height: 2px;
     background: var(--kc);
     border-radius: 999px;
     display: block;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    position: absolute;
+    left: 0;
+    transition: background-color 0.24s ease, opacity 0.24s ease, transform 0.3s ease, top 0.3s ease, width 0.3s ease;
   }
 
-  .lai-header-hamburger-btn__label {
-    color: var(--kc);
-    font-size: 9px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0;
-    transition: color 0.2s ease;
+  .lai-header-hamburger-btn__line:nth-child(1) {
+    top: 6px;
   }
 
-  .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__line {
-    background: #fff;
+  .lai-header-hamburger-btn__line:nth-child(2) {
+    top: 13px;
+    width: 20px;
+    left: 4px;
   }
 
-  .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__label {
-    color: #fff;
+  .lai-header-hamburger-btn__line:nth-child(3) {
+    top: 20px;
+  }
+
+  .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__icon {
+    transform: rotate(-28deg);
+  }
+
+  .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__line:nth-child(1) {
+    transform: translateX(3px);
+  }
+
+  .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__line:nth-child(2) {
+    width: 28px;
+    left: 0;
+  }
+
+  .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__line:nth-child(3) {
+    transform: translateX(-3px);
+  }
+
+  body:has(#g-nav-panel.show) .lai-header-hamburger-btn__icon {
+    transform: rotate(0deg);
+  }
+
+  body:has(#g-nav-panel.show) .lai-header-hamburger-btn__line:nth-child(1) {
+    top: 13px;
+    transform: rotate(45deg);
+  }
+
+  body:has(#g-nav-panel.show) .lai-header-hamburger-btn__line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  body:has(#g-nav-panel.show) .lai-header-hamburger-btn__line:nth-child(3) {
+    top: 13px;
+    transform: rotate(-45deg);
   }
 
   .g-hamburger {
@@ -166,8 +218,8 @@
 
   @media screen and (max-width: 575px) {
     .lai-header-hamburger-btn {
-      width: 62px;
-      height: 42px;
+      width: 52px;
+      height: 52px;
     }
 
     .g-hamburger {
