@@ -4,6 +4,15 @@
       <span class="lai-header-hamburger-btn__line"></span>
       <span class="lai-header-hamburger-btn__line"></span>
       <span class="lai-header-hamburger-btn__line"></span>
+      <span class="lai-header-hamburger-btn__dot"></span>
+      <span class="lai-header-hamburger-btn__dot"></span>
+      <span class="lai-header-hamburger-btn__dot"></span>
+      <span class="lai-header-hamburger-btn__dot"></span>
+      <span class="lai-header-hamburger-btn__dot"></span>
+      <span class="lai-header-hamburger-btn__dot"></span>
+      <span class="lai-header-hamburger-btn__dot"></span>
+      <span class="lai-header-hamburger-btn__dot"></span>
+      <span class="lai-header-hamburger-btn__dot"></span>
     </span>
   </button>
 <?php endif; ?>
