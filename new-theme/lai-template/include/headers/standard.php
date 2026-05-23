@@ -31,9 +31,10 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
         </nav>
       </div>
 
+      <div class="col-auto ms-auto d-flex align-items-center gap-2">
       <?php if (lai_template_should_show_header_cta()) : ?>
         <!-- 無料相談ボタン -->
-        <div class="col-6 col-lg-2">
+        <div class="d-none d-lg-block">
           <div class="g-header__nav text-end">
             <a href="<?= wmp_get_link('contact', ''); ?>" class="c-btn-solid-border --white --small c-border u-font-pc-16 u-font-sp-16" style="--color: #fff; --bc: var(--line); --border: transparent; --border2: transparent; --radius: 5px">
               <span class="c-btn-solid-border__txt">
@@ -51,7 +52,6 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
         </div>
       <?php endif; ?>
 
-      <div class="col-auto">
         <?php get_template_part('include/header-hamburger-button'); ?>
       </div>
     </div>

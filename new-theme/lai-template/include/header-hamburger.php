@@ -1,7 +1,7 @@
 <style>
   .lai-header-hamburger-btn {
-    width: 58px;
-    height: 58px;
+    width: 52px;
+    height: 52px;
     background: rgba(255, 255, 255, 0.94);
     border: 1px solid rgba(var(--kc-rgb), 0.24);
     border-radius: 50%;
@@ -19,10 +19,10 @@
     content: '';
     width: 72px;
     height: 72px;
-    background: linear-gradient(135deg, rgba(var(--kc-rgb), 0.18), rgba(var(--sc-rgb), 0.34));
+    background: linear-gradient(45deg, rgba(var(--kc-rgb), 0.18), rgba(var(--sc-rgb), 0.34));
     position: absolute;
     inset: -8px;
-    transform: translateX(-66%) rotate(-18deg);
+    transform: translateX(66%) rotate(18deg);
     transition: transform 0.36s ease;
   }
 
@@ -34,7 +34,7 @@
   }
 
   .lai-header-hamburger-btn:hover:before {
-    transform: translateX(18%) rotate(-18deg);
+    transform: translateX(-18%) rotate(18deg);
   }
 
   .lai-header-hamburger-btn:focus {
@@ -47,7 +47,7 @@
     display: block;
     position: relative;
     z-index: 1;
-    transform: rotate(-14deg);
+    transform: rotate(14deg);
     transition: transform 0.3s ease;
   }
 
@@ -77,11 +77,11 @@
   }
 
   .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__icon {
-    transform: rotate(-28deg);
+    transform: rotate(28deg);
   }
 
   .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__line:nth-child(1) {
-    transform: translateX(3px);
+    transform: translateX(-3px);
   }
 
   .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__line:nth-child(2) {
@@ -90,7 +90,7 @@
   }
 
   .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__line:nth-child(3) {
-    transform: translateX(-3px);
+    transform: translateX(3px);
   }
 
   body:has(#g-nav-panel.show) .lai-header-hamburger-btn__icon {
@@ -218,8 +218,8 @@
 
   @media screen and (max-width: 575px) {
     .lai-header-hamburger-btn {
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
     }
 
     .g-hamburger {

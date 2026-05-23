@@ -21,9 +21,10 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
         </div>
       </div>
 
+      <div class="col-auto ms-auto d-flex align-items-center gap-2">
       <?php if (lai_template_should_show_header_cta()) : ?>
         <!-- Email Consultation Button -->
-        <div class="col-6 col-lg-2 ms-auto me-3 d-none d-lg-block">
+        <div class="d-none d-xl-block">
           <a href="#contact" class="c-btn-solid-border --white --small c-border u-font-pc-16 u-font-sp-16" style="--color: #fff; --bc: var(--sc); --border: transparent; --border2: transparent; --radius: 5px">
             <span class="c-btn-solid-border__txt">
               <span class="c-btn-solid-border__txt-in">メールで無料相談</span>
@@ -39,7 +40,7 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
         </div>
 
         <!-- LINE Consultation Button -->
-        <div class="col-6 col-lg-2 d-none d-lg-block">
+        <div class="d-none d-xl-block">
           <a href="https://line.me/R/ti/p/@883wioop/" target="_blank" class="c-btn-solid-border --white --small c-border u-font-pc-16 u-font-sp-16" style="--color: #fff; --bc: var(--line); --border: transparent; --border2: transparent; --radius: 5px">
             <span class="c-btn-solid-border__txt">
               <span class="c-btn-solid-border__txt-in">LINEで無料相談</span>
@@ -75,7 +76,6 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
         </div>
       <?php endif; ?>
 
-      <div class="col-auto">
         <?php get_template_part('include/header-hamburger-button'); ?>
       </div>
     </div>
