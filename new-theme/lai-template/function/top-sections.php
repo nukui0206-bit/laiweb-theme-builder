@@ -53,18 +53,54 @@ if (!function_exists('lai_template_default_top_sections')) {
   }
 }
 
+if (!function_exists('lai_template_top_section_order_slots')) {
+  function lai_template_top_section_order_slots()
+  {
+    return max(3, count(lai_template_top_sections()));
+  }
+}
+
 if (!function_exists('lai_template_enabled_top_sections')) {
   function lai_template_enabled_top_sections()
   {
+    $sections = lai_template_top_sections();
+    $section_keys = array_keys($sections);
+
     if (function_exists('get_field')) {
       $enabled = get_field('top_sections', 'option');
 
       if (is_array($enabled)) {
-        return array_values(array_intersect($enabled, array_keys(lai_template_top_sections())));
+        $enabled = array_values(array_intersect($enabled, $section_keys));
+      } else {
+        $enabled = lai_template_default_top_sections();
+      }
+    } else {
+      $enabled = lai_template_default_top_sections();
+    }
+
+    if (empty($enabled)) {
+      return array();
+    }
+
+    $ordered = array();
+
+    if (function_exists('get_field')) {
+      for ($i = 1; $i <= lai_template_top_section_order_slots(); $i++) {
+        $section_key = get_field('top_section_order_' . $i, 'option');
+
+        if (is_string($section_key) && in_array($section_key, $enabled, true) && !in_array($section_key, $ordered, true)) {
+          $ordered[] = $section_key;
+        }
       }
     }
 
-    return lai_template_default_top_sections();
+    foreach ($enabled as $section_key) {
+      if (!in_array($section_key, $ordered, true)) {
+        $ordered[] = $section_key;
+      }
+    }
+
+    return $ordered;
   }
 }
 
@@ -167,6 +203,51 @@ if (!function_exists('lai_template_register_top_section_fields')) {
           'toggle' => 0,
           'allow_custom' => 0,
           'save_custom' => 0,
+        ),
+        array(
+          'key' => 'field_lai_template_top_section_order_message',
+          'label' => 'トップページ表示順',
+          'name' => '',
+          'type' => 'message',
+          'message' => '表示順を変えたい場合だけ、上から順にセクションを選択します。未指定のセクションは「トップページ表示セクション」の順番で後ろに表示されます。',
+          'new_lines' => 'wpautop',
+          'esc_html' => 0,
+        ),
+        array(
+          'key' => 'field_lai_template_top_section_order_1',
+          'label' => '表示順 1番目',
+          'name' => 'top_section_order_1',
+          'type' => 'select',
+          'choices' => array_merge(array('' => '未指定'), lai_template_top_section_choices()),
+          'default_value' => '',
+          'allow_null' => 0,
+          'multiple' => 0,
+          'ui' => 1,
+          'return_format' => 'value',
+        ),
+        array(
+          'key' => 'field_lai_template_top_section_order_2',
+          'label' => '表示順 2番目',
+          'name' => 'top_section_order_2',
+          'type' => 'select',
+          'choices' => array_merge(array('' => '未指定'), lai_template_top_section_choices()),
+          'default_value' => '',
+          'allow_null' => 0,
+          'multiple' => 0,
+          'ui' => 1,
+          'return_format' => 'value',
+        ),
+        array(
+          'key' => 'field_lai_template_top_section_order_3',
+          'label' => '表示順 3番目',
+          'name' => 'top_section_order_3',
+          'type' => 'select',
+          'choices' => array_merge(array('' => '未指定'), lai_template_top_section_choices()),
+          'default_value' => '',
+          'allow_null' => 0,
+          'multiple' => 0,
+          'ui' => 1,
+          'return_format' => 'value',
         ),
         array(
           'key' => 'field_lai_template_latest_posts_layout',
