@@ -18,6 +18,7 @@ require_once(SLIB_DIR . '/wmp-setting.php');
 require_once('function/site.php');
 require_once('function/content-modules.php');
 require_once('function/top-sections.php');
+require_once('function/cta.php');
 
 // リライトルール追加
 function wmp_rewrite_rule()

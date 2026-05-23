@@ -490,10 +490,10 @@ loading_scope: front_only/all_pages
 初期候補:
 
 ```text
-cta-standard
-cta-compact
-cta-phone-line
-cta-reservation
+none: 表示しない
+standard: 標準CTA
+compact: コンパクトCTA
+common: 背景画像CTA
 ```
 
 作業:
@@ -503,7 +503,8 @@ include/ctas/を作成
 include/cta.phpをディスパッチャー化
 include/cta-compact.phpとの役割を整理
 ACFオプションに cta_layout を追加
-電話/LINE/問い合わせ/予約URLの共通フィールドを整理
+電話/LINE/問い合わせ/予約URLの共通フィールドは段階的に整理
+CTAの表示位置はindex.phpや各テンプレート側で調整する
 ```
 
 完了条件:
