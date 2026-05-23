@@ -11,6 +11,17 @@ if (!function_exists('lai_template_header_layouts')) {
   }
 }
 
+if (!function_exists('lai_template_header_hamburger_modes')) {
+  function lai_template_header_hamburger_modes()
+  {
+    return array(
+      'mobile' => 'スマホのみ表示',
+      'all' => 'PC・スマホ両方に表示',
+      'none' => '表示しない',
+    );
+  }
+}
+
 if (!function_exists('lai_template_current_header_layout')) {
   function lai_template_current_header_layout()
   {
@@ -23,6 +34,49 @@ if (!function_exists('lai_template_current_header_layout')) {
     }
 
     return 'standard';
+  }
+}
+
+if (!function_exists('lai_template_current_header_hamburger_mode')) {
+  function lai_template_current_header_hamburger_mode()
+  {
+    if (function_exists('get_field')) {
+      $mode = get_field('header_hamburger_mode', 'option');
+
+      if (is_string($mode) && array_key_exists($mode, lai_template_header_hamburger_modes())) {
+        return $mode;
+      }
+    }
+
+    return 'mobile';
+  }
+}
+
+if (!function_exists('lai_template_should_show_header_hamburger')) {
+  function lai_template_should_show_header_hamburger()
+  {
+    return lai_template_current_header_hamburger_mode() !== 'none';
+  }
+}
+
+if (!function_exists('lai_template_header_hamburger_button_classes')) {
+  function lai_template_header_hamburger_button_classes($extra_class = '')
+  {
+    $classes = array('navbar-toggler', 'lai-header-hamburger-btn');
+    $mode = lai_template_current_header_hamburger_mode();
+
+    if ($mode === 'mobile') {
+      $classes[] = 'd-flex';
+      $classes[] = 'd-lg-none';
+    } elseif ($mode === 'all') {
+      $classes[] = 'd-flex';
+    }
+
+    if (is_string($extra_class) && $extra_class !== '') {
+      $classes[] = $extra_class;
+    }
+
+    return implode(' ', $classes);
   }
 }
 
@@ -73,6 +127,19 @@ if (!function_exists('lai_template_register_header_fields')) {
           'ui' => 1,
           'ui_on_text' => '表示',
           'ui_off_text' => '非表示',
+        ),
+        array(
+          'key' => 'field_lai_template_header_hamburger_mode',
+          'label' => 'ハンバーガーメニュー',
+          'name' => 'header_hamburger_mode',
+          'type' => 'select',
+          'instructions' => 'ヘッダーにハンバーガーボタンを表示する範囲を選択します。中身はinclude/nav.phpをhamburger用として読み込みます。',
+          'choices' => lai_template_header_hamburger_modes(),
+          'default_value' => 'mobile',
+          'allow_null' => 0,
+          'multiple' => 0,
+          'ui' => 1,
+          'return_format' => 'value',
         ),
       ),
       'location' => array(

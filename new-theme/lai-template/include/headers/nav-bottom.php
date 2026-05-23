@@ -74,6 +74,10 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
           </a>
         </div>
       <?php endif; ?>
+
+      <div class="col-auto">
+        <?php get_template_part('include/header-hamburger-button'); ?>
+      </div>
     </div>
 
     <!-- Navigation Row -->
