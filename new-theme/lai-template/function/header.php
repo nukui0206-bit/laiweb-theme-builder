@@ -22,6 +22,17 @@ if (!function_exists('lai_template_header_hamburger_modes')) {
   }
 }
 
+if (!function_exists('lai_template_header_hamburger_button_styles')) {
+  function lai_template_header_hamburger_button_styles()
+  {
+    return array(
+      'round' => '丸型',
+      'square' => '四角型',
+      'dots' => 'ドット型',
+    );
+  }
+}
+
 if (!function_exists('lai_template_current_header_layout')) {
   function lai_template_current_header_layout()
   {
@@ -34,6 +45,21 @@ if (!function_exists('lai_template_current_header_layout')) {
     }
 
     return 'standard';
+  }
+}
+
+if (!function_exists('lai_template_current_header_hamburger_button_style')) {
+  function lai_template_current_header_hamburger_button_style()
+  {
+    if (function_exists('get_field')) {
+      $style = get_field('header_hamburger_button_style', 'option');
+
+      if (is_string($style) && array_key_exists($style, lai_template_header_hamburger_button_styles())) {
+        return $style;
+      }
+    }
+
+    return 'square';
   }
 }
 
@@ -63,6 +89,7 @@ if (!function_exists('lai_template_header_hamburger_button_classes')) {
   function lai_template_header_hamburger_button_classes($extra_class = '')
   {
     $classes = array('navbar-toggler', 'lai-header-hamburger-btn');
+    $classes[] = 'lai-header-hamburger-btn--' . lai_template_current_header_hamburger_button_style();
     $mode = lai_template_current_header_hamburger_mode();
 
     if ($mode === 'mobile') {
@@ -136,6 +163,19 @@ if (!function_exists('lai_template_register_header_fields')) {
           'instructions' => 'ヘッダーにハンバーガーボタンを表示する範囲を選択します。中身はinclude/nav.phpをhamburger用として読み込みます。',
           'choices' => lai_template_header_hamburger_modes(),
           'default_value' => 'mobile',
+          'allow_null' => 0,
+          'multiple' => 0,
+          'ui' => 1,
+          'return_format' => 'value',
+        ),
+        array(
+          'key' => 'field_lai_template_header_hamburger_button_style',
+          'label' => 'ハンバーガーボタン形状',
+          'name' => 'header_hamburger_button_style',
+          'type' => 'select',
+          'instructions' => 'ハンバーガーボタンの見た目を選択します。細かい動きや余白はinclude/header-hamburger.php側で調整します。',
+          'choices' => lai_template_header_hamburger_button_styles(),
+          'default_value' => 'square',
           'allow_null' => 0,
           'multiple' => 0,
           'ui' => 1,

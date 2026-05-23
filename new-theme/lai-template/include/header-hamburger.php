@@ -4,7 +4,7 @@
     height: 52px;
     background: rgba(255, 255, 255, 0.94);
     border: 1px solid rgba(var(--kc-rgb), 0.24);
-    border-radius: 50%;
+    border-radius: 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     align-items: center;
     justify-content: center;
@@ -15,14 +15,26 @@
     transition: background-color 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
   }
 
+  .lai-header-hamburger-btn--round {
+    border-radius: 50%;
+  }
+
+  .lai-header-hamburger-btn--square {
+    border-radius: 8px;
+  }
+
+  .lai-header-hamburger-btn--dots {
+    border-radius: 50%;
+  }
+
   .lai-header-hamburger-btn:before {
     content: '';
     width: 72px;
     height: 72px;
-    background: linear-gradient(45deg, rgba(var(--kc-rgb), 0.18), rgba(var(--sc-rgb), 0.34));
+    background: linear-gradient(90deg, rgba(var(--kc-rgb), 0.16), rgba(var(--sc-rgb), 0.32));
     position: absolute;
     inset: -8px;
-    transform: translateX(66%) rotate(18deg);
+    transform: translateX(66%);
     transition: transform 0.36s ease;
   }
 
@@ -34,7 +46,7 @@
   }
 
   .lai-header-hamburger-btn:hover:before {
-    transform: translateX(-18%) rotate(18deg);
+    transform: translateX(-18%);
   }
 
   .lai-header-hamburger-btn:focus {
@@ -47,7 +59,7 @@
     display: block;
     position: relative;
     z-index: 1;
-    transform: rotate(14deg);
+    transform: rotate(0deg);
     transition: transform 0.3s ease;
   }
 
@@ -77,11 +89,11 @@
   }
 
   .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__icon {
-    transform: rotate(28deg);
+    transform: rotate(0deg);
   }
 
   .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__line:nth-child(1) {
-    transform: translateX(-3px);
+    transform: translateX(3px);
   }
 
   .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__line:nth-child(2) {
@@ -90,7 +102,43 @@
   }
 
   .lai-header-hamburger-btn:hover .lai-header-hamburger-btn__line:nth-child(3) {
-    transform: translateX(3px);
+    transform: translateX(-3px);
+  }
+
+  .lai-header-hamburger-btn--dots .lai-header-hamburger-btn__icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .lai-header-hamburger-btn--dots .lai-header-hamburger-btn__line {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    left: 9px;
+  }
+
+  .lai-header-hamburger-btn--dots .lai-header-hamburger-btn__line:nth-child(1) {
+    top: 2px;
+  }
+
+  .lai-header-hamburger-btn--dots .lai-header-hamburger-btn__line:nth-child(2) {
+    top: 10px;
+    width: 7px;
+    left: 9px;
+  }
+
+  .lai-header-hamburger-btn--dots .lai-header-hamburger-btn__line:nth-child(3) {
+    top: 18px;
+  }
+
+  .lai-header-hamburger-btn--dots:hover .lai-header-hamburger-btn__line:nth-child(1),
+  .lai-header-hamburger-btn--dots:hover .lai-header-hamburger-btn__line:nth-child(3) {
+    transform: none;
+  }
+
+  .lai-header-hamburger-btn--dots:hover .lai-header-hamburger-btn__line:nth-child(2) {
+    width: 7px;
+    left: 9px;
   }
 
   body:has(#g-nav-panel.show) .lai-header-hamburger-btn__icon {
@@ -100,6 +148,8 @@
   body:has(#g-nav-panel.show) .lai-header-hamburger-btn__line:nth-child(1) {
     top: 13px;
     transform: rotate(45deg);
+    width: 28px;
+    left: 0;
   }
 
   body:has(#g-nav-panel.show) .lai-header-hamburger-btn__line:nth-child(2) {
@@ -110,6 +160,13 @@
   body:has(#g-nav-panel.show) .lai-header-hamburger-btn__line:nth-child(3) {
     top: 13px;
     transform: rotate(-45deg);
+    width: 28px;
+    left: 0;
+  }
+
+  body:has(#g-nav-panel.show) .lai-header-hamburger-btn--dots .lai-header-hamburger-btn__line {
+    height: 2px;
+    border-radius: 999px;
   }
 
   .g-hamburger {
