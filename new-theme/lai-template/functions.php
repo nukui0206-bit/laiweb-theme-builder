@@ -19,6 +19,7 @@ require_once('function/site.php');
 require_once('function/content-modules.php');
 require_once('function/top-sections.php');
 require_once('function/cta.php');
+require_once('function/loading.php');
 
 // リライトルール追加
 function wmp_rewrite_rule()

@@ -459,14 +459,15 @@ split: 画面分割型
 include/loading.phpを作成
 include/loadings/を作成
 既存footer.php内のpreloaderを分離
-ACFオプションに loading_enabled / loading_layout / loading_scope を追加
+既存ACFオプション loading_type / loading_img を活用
+ACFオプションに loading_scope を追加
 ```
 
 選択項目:
 
 ```text
-loading_enabled: true/false
-loading_layout: none/logo/progress/split
+loading_type: none/logo/progress/split
+loading_img: ロゴ表示用画像
 loading_scope: front_only/all_pages
 ```
 
