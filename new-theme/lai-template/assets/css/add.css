@@ -210,67 +210,43 @@ color: #ffffff;
 .g-nav .lower{position: fixed;}
 
 /* ==========================================================================
- * Phase 3.2: Header layout adjustments (laiweb / town / clinic + hamburger)
- *   town-suido / 4foot4 の SCSS を参考に、デザイン洗練版に差し替え
+ * Phase 3.1: Header layout adjustments (laiweb / town / clinic + hamburger)
+ *   _header.scss に未定義のクラスを補強し、3 レイアウト共通で見た目を整える
  * ========================================================================== */
 
-/* --- ハンバーガーボタン（おしゃれな円形 + パルスアニメ、town-suido --linedeg ベース） --- */
+/* --- ハンバーガーボタン共通スタイル --- */
 .g-header__nav-btn {
-  --hb-bg: var(--kc, #1f2937);
-  --hb-bg2: var(--sc, #4b5563);
-  --hb-line: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--hb-bg) 0%, var(--hb-bg2) 100%);
+  background-color: var(--kc, #333);
+  border: 1px solid transparent;
   cursor: pointer;
   position: relative;
   z-index: 5;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-  transition: box-shadow 0.3s ease, transform 0.25s ease;
 }
 
 .g-header__nav-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  background-color: var(--ac, #555);
+  transform: scale(1.05);
 }
 
 .g-header__nav-btn .popup {
-  width: 56px;
-  height: 56px;
+  width: 22px;
+  height: 16px;
   position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transform: rotate(-45deg);
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.g-header__nav-btn .popup:after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  transform: scale(0);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 0;
-}
-
-.g-header__nav-btn:hover .popup:after {
-  transform: scale(1);
+  display: inline-block;
 }
 
 .g-header__nav-btn .popup .open,
 .g-header__nav-btn .popup .close {
-  background: transparent;
   border: 0;
+  background: transparent;
   padding: 0;
   margin: 0;
   position: absolute;
@@ -278,297 +254,51 @@ color: #ffffff;
   cursor: pointer;
 }
 
+.g-header__nav-btn .popup .open {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .g-header__nav-btn .popup .open > div {
-  width: 24px;
-  height: 0;
-  border-bottom: 2px solid var(--hb-line);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scaleX(1);
-}
-
-.g-header__nav-btn .popup .open > div:nth-child(1) {
-  width: 12px;
-  top: 35%;
-  animation: hbOpen 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-}
-
-.g-header__nav-btn .popup .open > div:nth-child(2) {
-  animation: hbOpen 2s 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-}
-
-.g-header__nav-btn .popup .open > div:nth-child(3) {
-  width: 12px;
-  top: 65%;
-  animation: hbOpen 2s 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .g-header__nav-btn .popup .close {
   display: none;
 }
 
-@keyframes hbOpen {
-  0% {
-    transform: translate(-50%, -50%) scaleX(0);
-    transform-origin: right top;
-  }
-  20% {
-    transform: translate(-50%, -50%) scaleX(1);
-    transform-origin: right top;
-  }
-  80% {
-    transform: translate(-50%, -50%) scaleX(1);
-    transform-origin: right top;
-  }
-  100% {
-    transform: translate(-50%, -50%) scaleX(0);
-    transform-origin: left top;
-  }
-}
-
-/* --- offcanvas: simple（4foot4 風 全画面・白背景・モダン） --- */
-.offcanvas.g-hamburger--simple {
-  width: 100% !important;
-  height: 100% !important;
-  top: 0 !important;
-  right: 0 !important;
-  background-color: #fff;
-  background-image: radial-gradient(at top right, rgba(var(--kc-rgb, 30, 41, 59), 0.05) 0%, transparent 60%);
-}
-
-.offcanvas.g-hamburger--simple .offcanvas-header {
-  padding: 24px 32px 0;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.offcanvas.g-hamburger--simple .offcanvas-header .btn-close {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: var(--kc, #1f2937);
-  opacity: 1;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-  background-size: 14px;
-}
-
-.offcanvas.g-hamburger--simple .offcanvas-header .btn-close:hover {
-  transform: rotate(90deg);
-  background-color: var(--ac, #4b5563);
-}
-
-.offcanvas.g-hamburger--simple .g-hamburger__body {
-  padding: 32px 8vw 64px;
-  height: auto;
-}
-
-.offcanvas.g-hamburger--simple .g-hamburger__body .list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px 32px;
-}
-
-.offcanvas.g-hamburger--simple .g-hamburger__body .list .nav-item {
-  width: 100%;
-  opacity: 1;
-  margin: 0;
-}
-
-@media (min-width: 992px) {
-  .offcanvas.g-hamburger--simple .g-hamburger__body .list .nav-item {
-    width: calc(33.333% - 32px);
-  }
-}
-
-.offcanvas.g-hamburger--simple .g-hamburger__body .list .nav-link {
-  color: #1f2937;
-  font-size: 22px;
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.3;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  transition: color 0.25s ease, transform 0.25s ease;
-}
-
-.offcanvas.g-hamburger--simple .g-hamburger__body .list .nav-link:hover {
-  color: var(--ac, #2563eb);
-  transform: translateX(8px);
-}
-
-.offcanvas.g-hamburger--simple .g-hamburger__body .list .nav-link:before {
-  content: attr(data-title);
-  color: rgba(0, 0, 0, 0.35);
-  font-size: 12px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  order: -1;
-}
-
-/* --- offcanvas: rich は既存 _hamburger.scss 設定を尊重 --- */
-.offcanvas.g-hamburger--rich {
-  background-color: rgba(var(--kc-rgb, 30, 41, 59), 0.95);
-}
-
-/* --- town レイアウト固有 --- */
-.g-header__read {
-  font-size: 11px;
-  color: #555;
-  margin: 0 0 4px;
-  line-height: 1.4;
-  font-weight: 500;
-}
-
-@media (max-width: 991.98px) {
-  .g-header__read {
-    display: none;
-  }
-}
-
-.g-header .u-bg-ori {
-  background-color: var(--bg, #f5f5f5);
-  border-radius: 6px;
-}
-
-.g-header .number[data-action="call"] {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-}
-
-.g-header .number[data-action="call"] i {
-  font-size: 1.4em;
-}
-
-/* SP用メール無料相談ボタン（town レイアウト） */
-.g-header__nav-sp-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 8px 4px;
-  font-size: 11px;
-  font-weight: 700;
-  background-color: var(--ac, #ff9800);
-  color: #fff !important;
-  text-decoration: none;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.g-header__nav-sp-btn i {
-  margin-right: 4px;
-}
-
-/* --- clinic レイアウト固有 --- */
-.g-header > .container-fluid > .row.justify-content-center > .g-header__inner {
-  flex: 0 0 auto;
-  padding: 12px 16px;
-  display: flex;
-  justify-content: center;
-}
-
-.g-header > .container-fluid > .row.justify-content-center > .g-header__inner .g-header__logo-link-img {
-  max-height: 48px;
-  width: auto;
-}
-
-.g-header > .container-fluid > .row.justify-content-center > .col-12.d-none.d-lg-block {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 8px 0;
-}
-
-/* 縦書き予約ボタン：4foot4 風ティールで視認性アップ */
-.g-header__resv {
-  --resv-bg: #007a9b;
-  --resv-bg-hover: #005f7a;
-  position: fixed;
+.g-header__nav-btn .popup .close > div {
+  position: absolute;
   top: 50%;
+  left: 0;
   right: 0;
-  transform: translateY(-50%);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  background-color: var(--resv-bg);
-  color: #fff !important;
-  padding: 24px 12px;
-  text-decoration: none;
-  border-radius: 12px 0 0 12px;
-  z-index: 100;
-  font-weight: 700;
-  box-shadow: -4px 4px 16px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, padding-right 0.25s ease, box-shadow 0.3s ease;
 }
 
-.g-header__resv .ttl {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  letter-spacing: 0.15em;
+.g-header__nav-btn .popup .close > div:first-child > div,
+.g-header__nav-btn .popup .close > div:last-child > div {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 1px;
 }
 
-.g-header__resv .ttl i {
-  font-size: 1.2em;
-  writing-mode: horizontal-tb;
+.g-header__nav-btn .popup .close > div:first-child {
+  transform: rotate(45deg);
 }
 
-.g-header__resv:hover {
-  background-color: var(--resv-bg-hover);
-  color: #fff !important;
-  padding-right: 18px;
-  box-shadow: -8px 4px 24px rgba(0, 0, 0, 0.3);
+.g-header__nav-btn .popup .close > div:last-child {
+  transform: rotate(-45deg);
 }
 
-@media (max-width: 767.98px) {
-  .g-header__resv {
-    padding: 16px 8px;
-  }
-  .g-header__resv .ttl {
-    font-size: 12px;
-  }
+/* リッチ系の枠線バリエーション（town レイアウトの linedeg クラス対応） */
+.g-header__nav-btn.--linedeg {
+  background: linear-gradient(135deg, var(--kc, #333) 0%, var(--sc, #666) 100%);
 }
-
-/* --- SP用：laiweb / town のハンバーガーボタン位置確保 --- */
-@media (max-width: 991.98px) {
-  .g-header__nav-btn {
-    width: 48px;
-    height: 48px;
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    z-index: 120;
-  }
-  .g-header__nav-btn .popup {
-    width: 48px;
-    height: 48px;
-  }
-
-  /* laiweb: SP では「無料相談はこちら」テキストボタンを非表示にし、
-     ハンバーガー内の「お問合せ」リンクに導線を寄せる */
-  .g-header--laiweb .g-header__nav .c-btn-solid-border {
-    display: none;
-  }
-
-  /* town: SP のメール無料相談リンクとハンバーガーが両立するよう
-     ハンバーガー位置を少し下げる */
-  .g-header--town .g-header__nav-btn {
-    top: 8px;
-    right: 8px;
-  }
-}
-
 
 /* --- town レイアウト固有 --- */
 .g-header__read {

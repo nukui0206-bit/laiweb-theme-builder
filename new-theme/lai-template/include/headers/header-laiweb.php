@@ -16,7 +16,7 @@ $hamburger_pattern = function_exists('lai_template_current_header_hamburger') ? 
 $show_hamburger = ($hamburger_pattern !== 'none');
 ?>
 
-<header id="g-header" class="g-header g-header--laiweb" style="--background-color: #fff;">
+<header id="g-header" class="g-header" style="--background-color: #fff;">
   <div class="container-fluid px-3 py-3">
     <div class="row g-0 justify-content-between align-items-center">
       <!-- ロゴ -->

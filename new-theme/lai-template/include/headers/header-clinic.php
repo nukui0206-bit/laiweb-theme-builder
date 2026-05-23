@@ -13,7 +13,7 @@ $show_hamburger = ($hamburger_pattern !== 'none');
 $reservation_url = function_exists('lai_template_header_reservation_url') ? lai_template_header_reservation_url() : '';
 ?>
 
-<header id="g-header" class="g-header g-header--clinic" style="--background-color: #fff">
+<header id="g-header" class="g-header" style="--background-color: #fff">
   <div class="container-fluid p-0">
     <div class="row g-0 justify-content-center align-items-center">
       <!-- 中央ロゴ -->
