@@ -581,15 +581,15 @@ card: 画像付きカード型
 作業:
 
 ```text
-theme_primary_color: メインカラー
-theme_primary_dark_color: メインカラー濃色
-theme_secondary_color: サブカラー
-theme_secondary_dark_color: サブカラー濃色
-theme_accent_color: アクセントカラー
-theme_accent_dark_color: アクセントカラー濃色
-theme_text_color: 基本文字色
-theme_base_color: ベース濃色
-theme_line_color: LINEカラー
+theme_primary_color: メインカラー。CSS変数 --kc / --kc-rgb
+theme_primary_dark_color: メインカラー濃色。CSS変数 --kcd / --kcd-rgb
+theme_secondary_color: サブカラー。CSS変数 --sc / --sc-rgb
+theme_secondary_dark_color: サブカラー濃色。CSS変数 --scd / --scd-rgb
+theme_accent_color: アクセントカラー。CSS変数 --ac / --ac-rgb
+theme_accent_dark_color: アクセントカラー濃色。CSS変数 --acd / --acd-rgb
+theme_text_color: 基本文字色。CSS変数 --fc / --fc-rgb
+theme_base_color: ベース濃色。CSS変数 --bc / --bc-rgb
+theme_line_color: LINEカラー。CSS変数 --line / --line-rgb
 ```
 
 出力方法:
