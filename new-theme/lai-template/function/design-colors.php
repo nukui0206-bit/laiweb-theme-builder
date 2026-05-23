@@ -126,6 +126,15 @@ if (!function_exists('lai_template_register_design_color_fields')) {
       'title' => '基本カラー設定',
       'fields' => array(
         array(
+          'key' => 'field_lai_template_theme_color_reset',
+          'label' => 'カラー初期化',
+          'name' => '',
+          'type' => 'message',
+          'message' => '<button type="button" class="button" id="lai-template-reset-design-colors">基本カラーを初期値に戻す</button><p class="description">ボタンを押すと、この「基本カラー設定」内のカラーをテーマ初期値に戻します。保存するまでは反映されません。</p>',
+          'new_lines' => '',
+          'esc_html' => 0,
+        ),
+        array(
           'key' => 'field_lai_template_theme_primary_color',
           'label' => 'メインカラー',
           'name' => 'theme_primary_color',
@@ -226,3 +235,47 @@ if (!function_exists('lai_template_register_design_color_fields')) {
   }
 }
 add_action('acf/init', 'lai_template_register_design_color_fields');
+
+if (!function_exists('lai_template_design_color_reset_admin_script')) {
+  function lai_template_design_color_reset_admin_script()
+  {
+    if (empty($_GET['page']) || $_GET['page'] !== 'theme-general-settings') {
+      return;
+    }
+
+    $field_defaults = array(
+      'theme_primary_color' => lai_template_default_design_colors()['kc'],
+      'theme_primary_dark_color' => lai_template_default_design_colors()['kcd'],
+      'theme_secondary_color' => lai_template_default_design_colors()['sc'],
+      'theme_secondary_dark_color' => lai_template_default_design_colors()['scd'],
+      'theme_accent_color' => lai_template_default_design_colors()['ac'],
+      'theme_accent_dark_color' => lai_template_default_design_colors()['acd'],
+      'theme_text_color' => lai_template_default_design_colors()['fc'],
+      'theme_base_color' => lai_template_default_design_colors()['bc'],
+      'theme_line_color' => lai_template_default_design_colors()['line'],
+    );
+    ?>
+    <script>
+      jQuery(function($) {
+        const defaults = <?= wp_json_encode($field_defaults); ?>;
+
+        $('#lai-template-reset-design-colors').on('click', function() {
+          Object.keys(defaults).forEach(function(fieldName) {
+            const $field = $('.acf-field[data-name="' + fieldName + '"]');
+            const $input = $field.find('input.wp-color-picker').first();
+
+            if ($input.length && typeof $input.wpColorPicker === 'function') {
+              $input.wpColorPicker('color', defaults[fieldName]);
+              $input.trigger('change');
+              return;
+            }
+
+            $field.find('input[type="text"], input[type="hidden"]').first().val(defaults[fieldName]).trigger('change');
+          });
+        });
+      });
+    </script>
+    <?php
+  }
+}
+add_action('acf/input/admin_footer', 'lai_template_design_color_reset_admin_script');
