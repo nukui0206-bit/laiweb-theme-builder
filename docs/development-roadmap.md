@@ -414,9 +414,9 @@ dependencies
 初期候補:
 
 ```text
-footer-standard: nav/snav中心の標準型
-footer-rich: laiwebのサービスリンク付き大型フッター
-footer-simple: LPや小規模サイト用
+standard: 既存表示を維持する標準フッター
+simple: 小規模サイト/LP向けの簡易フッター
+rich: サービスリンク付き大型フッター
 ```
 
 作業:
@@ -426,7 +426,8 @@ include/footers/ を作成
 既存footer.phpから候補を分離
 include/footer.phpをディスパッチャー化
 ACFオプションに footer_layout を追加
-ハンバーガー/offcanvasの扱いを整理
+wp_footer() は include/footer.php 側に残す
+ハンバーガー/offcanvasの扱いはヘッダー選択式の時に整理
 ```
 
 完了条件:
