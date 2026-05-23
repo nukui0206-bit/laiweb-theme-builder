@@ -134,9 +134,17 @@
 
 
 
-    <?php foreach (lai_template_enabled_top_sections() as $top_section) : ?>
-      <?php get_template_part('include/top-sections/' . $top_section); ?>
-    <?php endforeach; ?>
+    <?php if (lai_template_is_top_section_enabled('latest-posts')) : ?>
+      <?php get_template_part('include/top-sections/latest-posts'); ?>
+    <?php endif; ?>
+
+    <?php if (lai_template_is_top_section_enabled('voice')) : ?>
+      <?php get_template_part('include/top-sections/voice'); ?>
+    <?php endif; ?>
+
+    <?php if (lai_template_is_top_section_enabled('faq')) : ?>
+      <?php get_template_part('include/top-sections/faq'); ?>
+    <?php endif; ?>
 
     <?php if (false) : ?>
     <section class="c-section c-section--wide c-section--white c-hover --flash p-common-news u-pt-pc-120 u-pt-sp-64">

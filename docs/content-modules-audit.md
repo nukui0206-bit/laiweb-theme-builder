@@ -169,9 +169,6 @@ lai_template_can_show_content_module($key)
 
 ```text
 top_sections: トップページ表示セクション
-top_section_order_1: 表示順 1番目
-top_section_order_2: 表示順 2番目
-top_section_order_3: 表示順 3番目
 ```
 
 初期選択肢:
@@ -187,10 +184,9 @@ faq: よくある質問
 表示順:
 
 ```text
-表示順のプルダウンが未指定の場合は、top_sectionsの既定順で表示する。
-表示順に指定されたセクションは上から優先して表示する。
-OFFになっているセクションや重複指定されたセクションは無視する。
-表示順に入っていないONのセクションは後ろに追加する。
+セクションの表示位置は管理画面化しすぎない。
+index.php上で get_template_part('include/top-sections/...') の位置を動かして調整する。
+top_sectionsは共通部品のON/OFFとして使う。
 ```
 
 ## 初期トップページ部品
