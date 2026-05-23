@@ -21,7 +21,7 @@ $line_url = function_exists('lai_template_header_line_url') ? lai_template_heade
 $tel_contact = function_exists('get_field') ? (string) get_field('tel_contact', 'option') : '';
 ?>
 
-<header id="g-header" class="g-header" style="--background-color: #fff;">
+<header id="g-header" class="g-header g-header--town" style="--background-color: #fff;">
   <div class="container-fluid p-0">
     <div class="row g-0 justify-content-between align-items-stretch">
       <!-- ロゴ + サブキャッチ -->

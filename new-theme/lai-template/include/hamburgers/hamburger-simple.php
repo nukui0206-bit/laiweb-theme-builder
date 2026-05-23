@@ -6,7 +6,7 @@
  * - Bootstrap offcanvas（id="g-nav-panel"）
  */
 ?>
-<div class="offcanvas offcanvas-end g-hamburger" tabindex="-1" id="g-nav-panel" aria-labelledby="g-nav-panel-label">
+<div class="offcanvas offcanvas-end g-hamburger g-hamburger--simple" tabindex="-1" id="g-nav-panel" aria-labelledby="g-nav-panel-label">
   <div class="offcanvas-header">
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>

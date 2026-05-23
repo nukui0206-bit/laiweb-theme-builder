@@ -9,7 +9,7 @@
 
 $image_url = function_exists('lai_template_header_hamburger_image_url') ? lai_template_header_hamburger_image_url() : '';
 ?>
-<div class="offcanvas offcanvas-end g-hamburger" tabindex="-1" id="g-nav-panel" aria-labelledby="g-nav-panel-label">
+<div class="offcanvas offcanvas-end g-hamburger g-hamburger--rich" tabindex="-1" id="g-nav-panel" aria-labelledby="g-nav-panel-label">
   <div class="row align-items-center">
     <div class="col-12 col-lg-3">
       <?php if ($image_url !== '') : ?>
