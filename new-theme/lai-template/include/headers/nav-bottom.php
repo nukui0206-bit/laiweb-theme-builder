@@ -6,12 +6,83 @@ require(SLIB_DIR . '/lib/wmp-global.php');
 $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
 ?>
 
-<header id="g-header" class="g-header" style="--background-color: #fff;">
-  <div class="container-fluid px-3 py-3">
-    <!-- Logo and Consultation Row -->
-    <div class="row g-0 justify-content-between align-items-center">
-      <!-- Logo -->
-      <div class="col-5 col-lg-4">
+<style>
+  .g-header--nav-bottom {
+    --background-color: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid rgba(var(--kc-rgb), 0.12);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(14px);
+  }
+
+  .g-header--nav-bottom .g-header__top {
+    min-height: 74px;
+    padding: 12px 24px 10px;
+  }
+
+  .g-header--nav-bottom .g-header__logo-link-img {
+    max-width: 176px;
+  }
+
+  .g-header--nav-bottom .g-header__actions {
+    gap: 10px;
+  }
+
+  .g-header--nav-bottom .g-header__action-btn {
+    min-width: 168px;
+    border-radius: 999px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .g-header--nav-bottom .g-header__nav-row {
+    border-top: 1px solid rgba(var(--kc-rgb), 0.1);
+    background: rgba(255, 255, 255, 0.72);
+    padding: 0 24px;
+  }
+
+  .g-header--nav-bottom .g-nav {
+    --bc: transparent !important;
+  }
+
+  .g-header--nav-bottom .g-nav__list {
+    min-height: 46px;
+    align-items: center;
+  }
+
+  .g-header--nav-bottom .g-nav__list .nav-link {
+    color: var(--fc);
+    padding: 14px 14px 13px;
+  }
+
+  .g-header--nav-bottom .g-nav__list .nav-link:before {
+    background: linear-gradient(var(--kc), var(--kc)) center bottom / 0 2px no-repeat;
+  }
+
+  .g-header--nav-bottom .g-nav__list .nav-link:hover {
+    color: var(--kc);
+  }
+
+  @media screen and (max-width: 1199px) {
+    .g-header--nav-bottom .g-header__top {
+      min-height: 68px;
+      padding: 10px 16px;
+    }
+
+    .g-header--nav-bottom .g-header__nav-row {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    .g-header--nav-bottom .g-header__logo-link-img {
+      max-width: 150px;
+    }
+  }
+</style>
+
+<header id="g-header" class="g-header g-header--nav-bottom">
+  <div class="container-fluid p-0">
+    <div class="g-header__top row g-0 justify-content-between align-items-center">
+      <div class="col-auto">
         <div class="g-header__inner">
           <<?= $logo_wrap; ?> class="g-header__logo">
             <a href="<?= home_url(); ?>" class="g-header__logo-link">
@@ -21,13 +92,13 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
         </div>
       </div>
 
-      <div class="col-auto ms-auto d-flex align-items-center gap-2">
+      <div class="g-header__actions col-auto ms-auto d-flex align-items-center">
       <?php if (lai_template_should_show_header_cta()) : ?>
         <!-- Email Consultation Button -->
         <div class="d-none d-xl-block">
-          <a href="#contact" class="c-btn-solid-border --white --small c-border u-font-pc-16 u-font-sp-16" style="--color: #fff; --bc: var(--sc); --border: transparent; --border2: transparent; --radius: 5px">
+          <a href="#contact" class="g-header__action-btn c-btn-solid-border --white --small c-border u-font-pc-15 u-font-sp-15" style="--color: #fff; --bc: var(--kc); --border: transparent; --border2: transparent; --radius: 999px">
             <span class="c-btn-solid-border__txt">
-              <span class="c-btn-solid-border__txt-in">メールで無料相談</span>
+              <span class="c-btn-solid-border__txt-in"><i class="fa-solid fa-envelope"></i> メール相談</span>
             </span>
             <span class="c-btn-solid-border__l"></span>
             <span class="c-btn-solid-border__t"></span>
@@ -41,9 +112,9 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
 
         <!-- LINE Consultation Button -->
         <div class="d-none d-xl-block">
-          <a href="https://line.me/R/ti/p/@883wioop/" target="_blank" class="c-btn-solid-border --white --small c-border u-font-pc-16 u-font-sp-16" style="--color: #fff; --bc: var(--line); --border: transparent; --border2: transparent; --radius: 5px">
+          <a href="https://line.me/R/ti/p/@883wioop/" target="_blank" class="g-header__action-btn c-btn-solid-border --white --small c-border u-font-pc-15 u-font-sp-15" style="--color: #fff; --bc: var(--line); --border: transparent; --border2: transparent; --radius: 999px">
             <span class="c-btn-solid-border__txt">
-              <span class="c-btn-solid-border__txt-in">LINEで無料相談</span>
+              <span class="c-btn-solid-border__txt-in">LINE相談</span>
             </span>
             <span class="c-btn-solid-border__l"></span>
             <span class="c-btn-solid-border__t"></span>
@@ -80,10 +151,9 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
       </div>
     </div>
 
-    <!-- Navigation Row -->
-    <div class="row g-0 justify-content-center align-items-center">
+    <div class="g-header__nav-row row g-0 justify-content-center align-items-center">
       <div class="col-12">
-        <nav id="g-nav" class="g-nav navbar-expand-lg"style="--bc: #fff;">
+        <nav id="g-nav" class="g-nav navbar-expand-lg">
           <div class="navbar-collapse">
             <ul class="navbar-nav g-nav__list row">
               <?php get_template_part('include/nav'); ?>
