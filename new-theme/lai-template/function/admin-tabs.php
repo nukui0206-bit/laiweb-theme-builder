@@ -41,9 +41,26 @@ if (!function_exists('lai_template_admin_settings_tabs')) {
       (function($) {
         var tabs = [
           {
+            key: 'basic',
+            label: '基本設定',
+            selectors: [
+              '[data-name="loading_enabled"]',
+              '[data-name="loading_type"]',
+              '[data-name="loading_scope"]',
+              '[data-name="loading_img"]',
+              '[data-name="loading"]'
+            ]
+          },
+          {
             key: 'header',
             label: 'ヘッダー設定',
-            selectors: ['[data-name="header_layout"]', '[data-name="header_show_cta"]', '[data-name="header_show_tel"]', '[data-name="header_cta_count"]', '[data-name="header_hamburger_mode"]']
+            selectors: [
+              '[data-name="header_layout"]',
+              '[data-name="header_show_cta"]',
+              '[data-name="header_show_tel"]',
+              '[data-name="header_cta_count"]',
+              '[data-name="header_hamburger_mode"]'
+            ]
           },
           {
             key: 'footer',
@@ -59,11 +76,6 @@ if (!function_exists('lai_template_admin_settings_tabs')) {
             key: 'cta',
             label: 'CTA設定',
             selectors: ['[data-name="cta_layout"]', '[data-name="cta_style"]', '[data-name="cta"]']
-          },
-          {
-            key: 'loading',
-            label: 'ローディング',
-            selectors: ['[data-name="loading_enabled"]', '[data-name="loading_type"]', '[data-name="loading"]']
           },
           {
             key: 'colors',
@@ -143,9 +155,10 @@ if (!function_exists('lai_template_admin_settings_tabs')) {
             activateTab($(this).attr('data-tab'));
           });
 
-          var initial = 'header';
+          var initial = 'basic';
           try {
-            initial = window.localStorage.getItem('laiTemplateSettingsTab') || initial;
+            var stored = window.localStorage.getItem('laiTemplateSettingsTab');
+            initial = stored === 'loading' ? 'basic' : (stored || initial);
           } catch (e) {}
 
           if (!usedTabs[initial]) {
