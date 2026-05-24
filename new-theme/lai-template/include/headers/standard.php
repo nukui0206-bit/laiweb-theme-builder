@@ -7,33 +7,81 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
 ?>
 
 <style>
-  .g-header .g-header__tel {
+  .g-header--standard .g-nav__list {
+    align-items: center;
+  }
+
+  .g-header--standard .g-nav__list .nav-link {
+    color: #111;
+    font-weight: 700;
+  }
+
+  .g-header--standard .g-nav__list .nav-link:hover,
+  .g-header--standard .g-nav__list .nav-link.is-active {
+    color: var(--kc);
+  }
+
+  .g-header--standard .g-header__actions {
+    gap: 8px;
+  }
+
+  .g-header--standard .g-header__tel {
     align-items: center;
     background: rgba(var(--kc-rgb), 0.08);
     border: 1px solid rgba(var(--kc-rgb), 0.16);
     border-radius: 999px;
     color: var(--kc);
     display: flex;
-    height: 42px;
+    height: 44px;
     padding: 0 16px;
     text-decoration: none;
     white-space: nowrap;
   }
 
-  .g-header .g-header__tel-number {
+  .g-header--standard .g-header__tel-number {
     color: var(--kc);
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 900;
     letter-spacing: 0;
   }
 
-  .g-header .g-header__tel-number i {
+  .g-header--standard .g-header__tel-number i {
     font-size: 14px;
     margin-right: 6px;
   }
+
+  .g-header--standard .g-header__action-btn {
+    align-items: center;
+    border-radius: 999px !important;
+    display: flex;
+    height: 44px;
+    justify-content: center;
+    min-width: 132px;
+    padding-bottom: 0;
+    padding-top: 0;
+    white-space: nowrap;
+  }
+
+  .g-header--standard .lai-header-hamburger-btn {
+    flex: 0 0 52px;
+  }
+
+  @media screen and (max-width: 1399px) {
+    .g-header--standard .g-header__tel-number {
+      font-size: 15px;
+    }
+
+    .g-header--standard .g-header__tel {
+      padding: 0 12px;
+    }
+
+    .g-header--standard .g-header__action-btn {
+      min-width: 118px;
+    }
+  }
 </style>
 
-<header id="g-header" class="g-header" style="--background-color: #fff;">
+<header id="g-header" class="g-header g-header--standard" style="--background-color: #fff;">
   <div class="container-fluid px-3 py-3">
     <div class="row g-0 justify-content-between align-items-center">
       <!-- ロゴ -->
@@ -58,7 +106,7 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
         </nav>
       </div>
 
-      <div class="col-auto ms-auto d-flex align-items-center gap-2">
+      <div class="g-header__actions col-auto ms-auto d-flex align-items-center">
         <div class="d-none d-lg-block">
           <?php lai_template_render_header_tel(); ?>
         </div>
