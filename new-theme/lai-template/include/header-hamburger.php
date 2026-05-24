@@ -194,15 +194,11 @@ if ($header_layout !== '') {
     height: 100vh !important;
     top: 0 !important;
     right: 0 !important;
-    background:
-      radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.22), transparent 24%),
-      radial-gradient(circle at 84% 78%, rgba(255, 255, 255, 0.16), transparent 26%),
-      linear-gradient(135deg, rgba(var(--kc-rgb), 0.98), rgba(var(--sc-rgb), 0.96)),
-      var(--kc);
+    background: #f5f5f4;
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    color: #fff;
+    color: #4e3f3a;
   }
 
   .g-hamburger.g-hamburger--nav-bottom {
@@ -235,11 +231,7 @@ if ($header_layout !== '') {
   }
 
   .g-hamburger--layout-full:before {
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-    background-size: 48px 48px;
-    opacity: 0.72;
+    display: none;
   }
 
   .g-hamburger .offcanvas-header,
@@ -273,14 +265,14 @@ if ($header_layout !== '') {
   }
 
   .g-hamburger--layout-full .btn-close {
-    width: 54px;
-    height: 54px;
-    background-color: rgba(255, 255, 255, 0.18);
-    border: 1px solid rgba(255, 255, 255, 0.32);
-    filter: invert(1) grayscale(1);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.82);
+    border: 0;
+    filter: none;
     position: absolute;
-    top: 32px;
-    right: 34px;
+    top: 24px;
+    right: 26px;
     z-index: 3;
   }
 
@@ -340,18 +332,18 @@ if ($header_layout !== '') {
     display: flex;
     height: 100vh;
     overflow-y: auto;
-    padding: 88px 8vw 72px;
+    padding: 86px 7vw 72px;
   }
 
   .g-hamburger--layout-full .g-hamburger__nav {
-    width: min(1080px, 100%);
+    width: min(1040px, 100%);
   }
 
   .g-hamburger--layout-full .list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: clamp(42px, 7vw, 92px);
-    row-gap: 8px;
+    column-gap: clamp(64px, 12vw, 170px);
+    row-gap: 24px;
   }
 
   .g-hamburger--layout-full .list .nav-item {
@@ -360,43 +352,41 @@ if ($header_layout !== '') {
   }
 
   .g-hamburger--layout-full .list .nav-link {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-    color: #fff;
-    font-size: 28px;
-    font-weight: 900;
-    min-height: 88px;
-    padding: 20px 0 20px 40px;
+    align-items: flex-start;
+    border-bottom: 0;
+    color: #6a5650;
+    flex-direction: column-reverse;
+    font-size: 15px;
+    font-weight: 500;
+    gap: 5px;
+    justify-content: flex-start;
+    line-height: 1.45;
+    min-height: 58px;
+    padding: 0;
     position: relative;
   }
 
   .g-hamburger--layout-full .list .nav-link:before {
-    content: '';
-    width: 12px;
-    height: 12px;
-    background: var(--ac);
-    border-radius: 50%;
-    left: 0;
-    opacity: 0.85;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.24s ease, background-color 0.24s ease;
+    display: none;
   }
 
   .g-hamburger--layout-full .list .nav-link:after {
-    color: rgba(255, 255, 255, 0.56);
-    font-size: 12px;
+    color: #899294;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1;
+    min-width: 0;
+    text-align: left;
   }
 
   .g-hamburger--layout-full .list .nav-link:hover {
-    color: #fff;
-    border-bottom-color: rgba(255, 255, 255, 0.42);
-    transform: translateX(6px);
+    color: var(--kc);
+    transform: translateX(4px);
   }
 
-  .g-hamburger--layout-full .list .nav-link:hover:before {
-    background: #fff;
-    transform: translateY(-50%) scale(1.35);
+  .g-hamburger--layout-full .list .nav-link:hover:after {
+    color: var(--kc);
   }
 
   .g-hamburger .lower,
@@ -442,10 +432,7 @@ if ($header_layout !== '') {
     }
 
     .g-hamburger--layout-full {
-      background:
-        radial-gradient(circle at 12% 16%, rgba(255, 255, 255, 0.2), transparent 26%),
-        linear-gradient(135deg, rgba(var(--kc-rgb), 0.98), rgba(var(--sc-rgb), 0.96)),
-        var(--kc);
+      background: #f5f5f4;
     }
 
     .g-hamburger--layout-full .offcanvas-header {
@@ -468,9 +455,13 @@ if ($header_layout !== '') {
     }
 
     .g-hamburger--layout-full .list .nav-link {
-      font-size: 22px;
+      font-size: 14px;
       min-height: 0;
-      padding: 18px 0 18px 28px;
+      padding: 0;
+    }
+
+    .g-hamburger--layout-full .list .nav-link:after {
+      font-size: 26px;
     }
   }
 </style>
