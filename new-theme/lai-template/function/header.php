@@ -39,8 +39,6 @@ if (!function_exists('lai_template_header_hamburger_panel_styles')) {
   {
     return array(
       'drawer' => 'サイドリスト',
-      'cards' => 'カード型',
-      'large' => '大きめメニュー',
       'full' => '全体表示',
     );
   }
@@ -51,8 +49,10 @@ if (!function_exists('lai_template_normalize_header_hamburger_panel_style')) {
   {
     $legacy_styles = array(
       'gradient' => 'drawer',
-      'light' => 'cards',
-      'minimal' => 'large',
+      'light' => 'drawer',
+      'minimal' => 'drawer',
+      'cards' => 'drawer',
+      'large' => 'drawer',
     );
 
     if (is_string($style) && array_key_exists($style, $legacy_styles)) {

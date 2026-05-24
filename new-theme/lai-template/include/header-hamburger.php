@@ -188,24 +188,6 @@ if ($header_layout !== '') {
     z-index: 1200;
   }
 
-  .g-hamburger--layout-cards {
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(var(--sc-rgb), 0.32)),
-      #fff;
-    border-color: rgba(var(--kc-rgb), 0.14);
-    color: var(--fc);
-  }
-
-  .g-hamburger--layout-large {
-    --bs-offcanvas-width: min(680px, 94vw);
-    width: min(680px, 94vw) !important;
-    background:
-      linear-gradient(135deg, rgba(18, 24, 32, 0.96), rgba(var(--kc-rgb), 0.86)),
-      #121820;
-    border-color: rgba(255, 255, 255, 0.16);
-    color: #fff;
-  }
-
   .g-hamburger--layout-full {
     --bs-offcanvas-width: 100vw;
     width: 100vw !important;
@@ -213,14 +195,14 @@ if ($header_layout !== '') {
     top: 0 !important;
     right: 0 !important;
     background:
-      linear-gradient(90deg, #f7fbff 0%, #f7fbff 38%, rgba(var(--kc-rgb), 0.96) 38%, rgba(var(--sc-rgb), 0.96) 100%),
-      #fff;
+      radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.22), transparent 24%),
+      radial-gradient(circle at 84% 78%, rgba(255, 255, 255, 0.16), transparent 26%),
+      linear-gradient(135deg, rgba(var(--kc-rgb), 0.98), rgba(var(--sc-rgb), 0.96)),
+      var(--kc);
     border: 0;
     border-radius: 0;
     box-shadow: none;
     color: #fff;
-    display: grid;
-    grid-template-columns: minmax(300px, 38%) 1fr;
   }
 
   .g-hamburger.g-hamburger--nav-bottom {
@@ -252,21 +234,12 @@ if ($header_layout !== '') {
     pointer-events: none;
   }
 
-  .g-hamburger--layout-cards:before {
-    background-image: linear-gradient(rgba(var(--kc-rgb), 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--kc-rgb), 0.08) 1px, transparent 1px);
-    opacity: 0.38;
-  }
-
-  .g-hamburger--layout-large:before {
-    background-image: none;
-  }
-
   .g-hamburger--layout-full:before {
     background:
-      linear-gradient(rgba(var(--kc-rgb), 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(var(--kc-rgb), 0.06) 1px, transparent 1px);
-    background-size: 44px 44px;
-    opacity: 1;
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.72;
   }
 
   .g-hamburger .offcanvas-header,
@@ -286,13 +259,8 @@ if ($header_layout !== '') {
     filter: brightness(0) invert(1);
   }
 
-  .g-hamburger--layout-cards .g-header__logo-link-img {
-    filter: none;
-  }
-
-  .g-hamburger--layout-full .g-header__logo-link-img {
-    max-width: 240px;
-    filter: none;
+  .g-hamburger--layout-full .g-header__logo {
+    display: none;
   }
 
   .g-hamburger .btn-close {
@@ -302,15 +270,6 @@ if ($header_layout !== '') {
     border-radius: 50%;
     opacity: 1;
     padding: 13px;
-  }
-
-  .g-hamburger--layout-cards .btn-close {
-    filter: none;
-    background-color: rgba(var(--kc-rgb), 0.1);
-  }
-
-  .g-hamburger--layout-large .btn-close {
-    background-color: rgba(255, 255, 255, 0.1);
   }
 
   .g-hamburger--layout-full .btn-close {
@@ -341,14 +300,6 @@ if ($header_layout !== '') {
     border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   }
 
-  .g-hamburger--layout-cards .list .nav-item {
-    border-bottom-color: rgba(var(--kc-rgb), 0.14);
-  }
-
-  .g-hamburger--layout-large .list .nav-item {
-    border-bottom-color: rgba(255, 255, 255, 0.12);
-  }
-
   .g-hamburger .list .nav-link {
     color: #fff;
     display: flex;
@@ -363,15 +314,6 @@ if ($header_layout !== '') {
     text-decoration: none;
   }
 
-  .g-hamburger--layout-cards .list .nav-link {
-    color: var(--fc);
-  }
-
-  .g-hamburger--layout-large .list .nav-link {
-    color: #fff;
-    letter-spacing: 0;
-  }
-
   .g-hamburger .list .nav-link:after {
     content: attr(data-title);
     color: rgba(255, 255, 255, 0.52);
@@ -382,118 +324,27 @@ if ($header_layout !== '') {
     text-align: right;
   }
 
-  .g-hamburger--layout-cards .list .nav-link:after {
-    color: rgba(var(--kc-rgb), 0.62);
-  }
-
-  .g-hamburger--layout-large .list .nav-link:after {
-    color: rgba(255, 255, 255, 0.36);
-  }
-
   .g-hamburger .list .nav-link:hover {
     color: var(--ac);
   }
 
-  .g-hamburger--layout-cards .list .nav-link:hover {
-    color: var(--kc);
-  }
-
-  .g-hamburger--layout-large .list .nav-link:hover {
-    color: var(--ac);
-  }
-
-  .g-hamburger--layout-cards .list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .g-hamburger--layout-cards .list .nav-item {
-    border: 0;
-  }
-
-  .g-hamburger--layout-cards .list .nav-link {
-    min-height: 118px;
-    align-items: flex-start;
-    background: rgba(255, 255, 255, 0.86);
-    border: 1px solid rgba(var(--kc-rgb), 0.12);
-    border-radius: 14px;
-    box-shadow: 0 14px 28px rgba(var(--kc-rgb), 0.08);
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 18px;
-    transition: border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
-  }
-
-  .g-hamburger--layout-cards .list .nav-link:after {
-    background: rgba(var(--kc-rgb), 0.08);
-    border-radius: 999px;
-    color: var(--kc);
-    min-width: 0;
-    padding: 6px 10px;
-    text-align: left;
-  }
-
-  .g-hamburger--layout-cards .list .nav-link:hover {
-    border-color: rgba(var(--kc-rgb), 0.28);
-    box-shadow: 0 18px 34px rgba(var(--kc-rgb), 0.14);
-    transform: translateY(-2px);
-  }
-
-  .g-hamburger--layout-large .g-hamburger__body {
-    padding: 42px 44px 46px;
-  }
-
-  .g-hamburger--layout-large .list .nav-item {
-    border-bottom: 0;
-  }
-
-  .g-hamburger--layout-large .list .nav-link {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    font-size: 30px;
-    font-weight: 900;
-    padding: 22px 0;
-    position: relative;
-  }
-
-  .g-hamburger--layout-large .list .nav-link:before {
-    content: '';
-    width: 0;
-    height: 2px;
-    background: var(--ac);
-    border-radius: 999px;
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    transition: width 0.28s ease;
-  }
-
-  .g-hamburger--layout-large .list .nav-link:hover:before {
-    width: 100%;
-  }
-
   .g-hamburger--layout-full .offcanvas-header {
-    align-items: center;
-    background:
-      radial-gradient(circle at 28% 26%, rgba(var(--kc-rgb), 0.14), transparent 34%),
-      #f7fbff;
     border: 0;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 56px;
+    min-height: 0;
+    padding: 0;
   }
 
   .g-hamburger--layout-full .offcanvas-body {
     align-items: center;
+    justify-content: center;
     display: flex;
     height: 100vh;
     overflow-y: auto;
-    padding: 84px 96px 72px;
+    padding: 88px 8vw 72px;
   }
 
   .g-hamburger--layout-full .g-hamburger__nav {
-    width: min(620px, 100%);
+    width: min(760px, 100%);
   }
 
   .g-hamburger--layout-full .list .nav-item {
@@ -504,9 +355,9 @@ if ($header_layout !== '') {
   .g-hamburger--layout-full .list .nav-link {
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     color: #fff;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 900;
-    padding: 20px 0 20px 34px;
+    padding: 22px 0 22px 40px;
     position: relative;
   }
 
@@ -581,44 +432,21 @@ if ($header_layout !== '') {
       padding: 16px 0;
     }
 
-    .g-hamburger--layout-cards .list {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    .g-hamburger--layout-cards .list .nav-link {
-      min-height: 86px;
-      padding: 16px;
-    }
-
-    .g-hamburger--layout-large .g-hamburger__body {
-      padding: 28px 24px 34px;
-    }
-
-    .g-hamburger--layout-large .list .nav-link {
-      font-size: 24px;
-      padding: 19px 0;
-    }
-
     .g-hamburger--layout-full {
-      display: block;
       background:
-        linear-gradient(180deg, #f7fbff 0%, #f7fbff 34%, rgba(var(--kc-rgb), 0.96) 34%, rgba(var(--sc-rgb), 0.96) 100%),
-        #fff;
+        radial-gradient(circle at 12% 16%, rgba(255, 255, 255, 0.2), transparent 26%),
+        linear-gradient(135deg, rgba(var(--kc-rgb), 0.98), rgba(var(--sc-rgb), 0.96)),
+        var(--kc);
     }
 
     .g-hamburger--layout-full .offcanvas-header {
-      min-height: 34vh;
-      padding: 44px 24px 30px;
+      min-height: 0;
+      padding: 0;
     }
 
     .g-hamburger--layout-full .offcanvas-body {
-      height: 66vh;
-      padding: 30px 28px 44px;
-    }
-
-    .g-hamburger--layout-full .g-header__logo-link-img {
-      max-width: 200px;
+      height: 100vh;
+      padding: 82px 28px 48px;
     }
 
     .g-hamburger--layout-full .btn-close {
