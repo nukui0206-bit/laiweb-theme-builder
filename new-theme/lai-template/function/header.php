@@ -34,6 +34,17 @@ if (!function_exists('lai_template_header_hamburger_button_styles')) {
   }
 }
 
+if (!function_exists('lai_template_header_hamburger_panel_styles')) {
+  function lai_template_header_hamburger_panel_styles()
+  {
+    return array(
+      'gradient' => 'グラデーション',
+      'light' => 'ライト',
+      'minimal' => 'ミニマル',
+    );
+  }
+}
+
 if (!function_exists('lai_template_current_header_layout')) {
   function lai_template_current_header_layout()
   {
@@ -46,6 +57,21 @@ if (!function_exists('lai_template_current_header_layout')) {
     }
 
     return 'standard';
+  }
+}
+
+if (!function_exists('lai_template_current_header_hamburger_panel_style')) {
+  function lai_template_current_header_hamburger_panel_style()
+  {
+    if (function_exists('get_field')) {
+      $style = get_field('header_hamburger_panel_style', 'option');
+
+      if (is_string($style) && array_key_exists($style, lai_template_header_hamburger_panel_styles())) {
+        return $style;
+      }
+    }
+
+    return 'gradient';
   }
 }
 
@@ -177,6 +203,19 @@ if (!function_exists('lai_template_register_header_fields')) {
           'instructions' => 'ハンバーガーボタンの見た目を選択します。細かい動きや余白はinclude/header-hamburger.php側で調整します。',
           'choices' => lai_template_header_hamburger_button_styles(),
           'default_value' => 'square',
+          'allow_null' => 0,
+          'multiple' => 0,
+          'ui' => 1,
+          'return_format' => 'value',
+        ),
+        array(
+          'key' => 'field_lai_template_header_hamburger_panel_style',
+          'label' => 'ハンバーガー展開デザイン',
+          'name' => 'header_hamburger_panel_style',
+          'type' => 'select',
+          'instructions' => 'ハンバーガーメニューを開いた時のパネルデザインを選択します。',
+          'choices' => lai_template_header_hamburger_panel_styles(),
+          'default_value' => 'gradient',
           'allow_null' => 0,
           'multiple' => 0,
           'ui' => 1,
