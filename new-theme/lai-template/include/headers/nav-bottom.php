@@ -165,6 +165,11 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
     right: 10px;
   }
 
+  body:has(.g-header--nav-bottom) .g-hamburger {
+    height: calc(100vh - 94px) !important;
+    top: 82px !important;
+  }
+
   @media screen and (max-width: 1199px) {
     .g-header--nav-bottom .g-header__top {
       height: 64px;
@@ -173,6 +178,11 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
 
     .g-header--nav-bottom .g-header__nav-row {
       display: none;
+    }
+
+    body:has(.g-header--nav-bottom) .g-hamburger {
+      height: calc(100vh - 82px) !important;
+      top: 73px !important;
     }
   }
 
@@ -202,6 +212,11 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
 
     .g-header--nav-bottom .lai-header-hamburger-btn {
       flex-basis: 48px;
+    }
+
+    body:has(.g-header--nav-bottom) .g-hamburger {
+      height: calc(100vh - 78px) !important;
+      top: 69px !important;
     }
   }
 </style>
