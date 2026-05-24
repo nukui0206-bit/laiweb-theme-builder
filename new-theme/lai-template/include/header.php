@@ -9,6 +9,8 @@ if (!in_array($header_layout, $header_layouts, true)) {
 get_template_part('include/headers/' . $header_layout);
 
 if (function_exists('lai_template_should_show_header_hamburger') && lai_template_should_show_header_hamburger()) {
-  get_template_part('include/header-hamburger');
+  get_template_part('include/header-hamburger', null, array(
+    'header_layout' => $header_layout,
+  ));
 }
 ?>

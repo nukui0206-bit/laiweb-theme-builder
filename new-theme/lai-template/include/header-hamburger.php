@@ -1,3 +1,12 @@
+<?php
+$header_layout = (isset($args['header_layout']) && is_string($args['header_layout'])) ? $args['header_layout'] : '';
+$hamburger_classes = array('offcanvas', 'offcanvas-end', 'g-hamburger');
+
+if ($header_layout !== '') {
+  $hamburger_classes[] = 'g-hamburger--' . sanitize_html_class($header_layout);
+}
+?>
+
 <style>
   .lai-header-hamburger-btn {
     width: 52px;
@@ -177,6 +186,18 @@
     z-index: 1200;
   }
 
+  .g-hamburger.g-hamburger--nav-bottom {
+    height: calc(100vh - 94px) !important;
+    top: 82px !important;
+  }
+
+  @media screen and (max-width: 1199px) {
+    .g-hamburger.g-hamburger--nav-bottom {
+      height: calc(100vh - 82px) !important;
+      top: 73px !important;
+    }
+  }
+
   .g-hamburger:before {
     content: '';
     width: 100%;
@@ -278,6 +299,11 @@
       border-radius: 14px 0 0 14px;
     }
 
+    .g-hamburger.g-hamburger--nav-bottom {
+      height: calc(100vh - 78px) !important;
+      top: 69px !important;
+    }
+
     .g-hamburger .offcanvas-header {
       padding: 22px 22px 18px;
     }
@@ -293,7 +319,7 @@
   }
 </style>
 
-<div class="offcanvas offcanvas-end g-hamburger" tabindex="-1" id="g-nav-panel" aria-labelledby="g-nav-panel-label">
+<div class="<?= esc_attr(implode(' ', $hamburger_classes)); ?>" tabindex="-1" id="g-nav-panel" aria-labelledby="g-nav-panel-label">
   <div class="offcanvas-header">
     <div id="g-nav-panel-label" class="g-header__logo">
       <a href="<?= home_url(); ?>" class="g-header__logo-link">
