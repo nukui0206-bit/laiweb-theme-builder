@@ -6,6 +6,7 @@ if (!function_exists('lai_template_header_layouts')) {
     return array(
       'standard' => '標準ヘッダー',
       'nav-bottom' => '2段ヘッダー',
+      'floating' => 'フローティングヘッダー',
       'logo-only' => 'ロゴのみ',
     );
   }
