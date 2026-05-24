@@ -4,6 +4,7 @@ require(SLIB_DIR . '/lib/wmp-global.php');
 ?>
 <?php
 $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
+$header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') : '';
 ?>
 
 <style>
@@ -28,9 +29,38 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
   }
 
   .g-header--nav-bottom .g-header__action-btn {
-    min-width: 168px;
+    min-width: 142px;
     border-radius: 999px !important;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .g-header--nav-bottom .g-header__tel {
+    color: var(--kc);
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    padding: 0 8px 0 0;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .g-header--nav-bottom .g-header__tel-label {
+    color: var(--fc);
+    font-size: 10px;
+    font-weight: 700;
+    opacity: 0.72;
+  }
+
+  .g-header--nav-bottom .g-header__tel-number {
+    color: var(--kc);
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  .g-header--nav-bottom .g-header__tel-number i {
+    font-size: 18px;
+    margin-right: 5px;
   }
 
   .g-header--nav-bottom .g-header__nav-row {
@@ -61,6 +91,50 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
     color: var(--kc);
   }
 
+  .g-header--nav-bottom .g-nav .lower {
+    width: calc(100vw - 48px);
+    max-width: 1120px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(var(--kc-rgb), 0.12);
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+    left: 50%;
+    right: auto;
+    top: 46px;
+    margin: 0;
+    padding: 22px;
+    transform: translateX(-50%);
+    z-index: 140;
+  }
+
+  .g-header--nav-bottom .g-nav .lower .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .g-header--nav-bottom .g-nav .lower .nav-item {
+    padding: 0 10px;
+  }
+
+  .g-header--nav-bottom .g-nav .lower .nav-link {
+    background: rgba(var(--kc-rgb), 0.04);
+    border-radius: 10px;
+    color: var(--fc);
+    height: 100%;
+    padding: 12px;
+  }
+
+  .g-header--nav-bottom .g-nav .lower .nav-link:hover {
+    background: rgba(var(--kc-rgb), 0.08);
+    color: var(--kc);
+  }
+
+  .g-header--nav-bottom .g-nav .lower .js-close__btn {
+    color: var(--kc);
+    top: 8px;
+    right: 10px;
+  }
+
   @media screen and (max-width: 1199px) {
     .g-header--nav-bottom .g-header__top {
       min-height: 68px;
@@ -69,6 +143,16 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
 
     .g-header--nav-bottom .g-header__nav-row {
       display: none;
+    }
+  }
+
+  @media screen and (max-width: 1399px) {
+    .g-header--nav-bottom .g-header__tel-number {
+      font-size: 18px;
+    }
+
+    .g-header--nav-bottom .g-header__action-btn {
+      min-width: 126px;
     }
   }
 
@@ -94,6 +178,15 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
 
       <div class="g-header__actions col-auto ms-auto d-flex align-items-center">
       <?php if (lai_template_should_show_header_cta()) : ?>
+        <?php if (is_string($header_tel) && $header_tel !== '') : ?>
+          <div class="d-none d-xl-block">
+            <a href="tel:<?= esc_attr($header_tel); ?>" class="g-header__tel">
+              <span class="g-header__tel-label">電話相談</span>
+              <span class="g-header__tel-number"><i class="fa-solid fa-phone-volume"></i><?= esc_html($header_tel); ?></span>
+            </a>
+          </div>
+        <?php endif; ?>
+
         <!-- Email Consultation Button -->
         <div class="d-none d-xl-block">
           <a href="#contact" class="g-header__action-btn c-btn-solid-border --white --small c-border u-font-pc-15 u-font-sp-15" style="--color: #fff; --bc: var(--kc); --border: transparent; --border2: transparent; --radius: 999px">
