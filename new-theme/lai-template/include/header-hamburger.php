@@ -3,6 +3,33 @@ $header_layout = (isset($args['header_layout']) && is_string($args['header_layou
 $panel_style = function_exists('lai_template_current_header_hamburger_panel_style') ? lai_template_current_header_hamburger_panel_style() : 'drawer';
 $hamburger_classes = array('offcanvas', 'offcanvas-end', 'g-hamburger');
 $hamburger_classes[] = 'g-hamburger--layout-' . sanitize_html_class($panel_style);
+$hamburger_logo = function_exists('get_field') ? get_field('logo', 'option') : '';
+$hamburger_info_logo = function_exists('get_field') ? get_field('logo_2', 'option') : '';
+$hamburger_company = function_exists('get_field') ? get_field('company', 'option') : '';
+$hamburger_tel = function_exists('get_field') ? get_field('tel_contact', 'option') : '';
+$hamburger_zip = '';
+$hamburger_address = '';
+
+if (function_exists('get_field')) {
+  $hamburger_branches = get_field('branch', 'option');
+
+  if (is_array($hamburger_branches)) {
+    $hamburger_branch_group = current($hamburger_branches);
+
+    if (is_array($hamburger_branch_group)) {
+      $hamburger_branch = current($hamburger_branch_group);
+
+      if (is_array($hamburger_branch)) {
+        $hamburger_zip = isset($hamburger_branch['zip']) ? $hamburger_branch['zip'] : '';
+        $hamburger_address = isset($hamburger_branch['addresss']) ? $hamburger_branch['addresss'] : '';
+      }
+    }
+  }
+}
+
+if (!$hamburger_info_logo) {
+  $hamburger_info_logo = $hamburger_logo;
+}
 
 if ($header_layout !== '') {
   $hamburger_classes[] = 'g-hamburger--' . sanitize_html_class($header_layout);
@@ -201,12 +228,30 @@ if ($header_layout !== '') {
     color: #4e3f3a;
   }
 
+  .g-hamburger--layout-full-info {
+    --bs-offcanvas-width: 100vw;
+    width: 100vw !important;
+    height: 100vh !important;
+    top: 0 !important;
+    right: 0 !important;
+    background: #141922;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    color: #fff;
+  }
+
   .g-hamburger.g-hamburger--nav-bottom {
     height: calc(100vh - 94px) !important;
     top: 82px !important;
   }
 
   .g-hamburger.g-hamburger--layout-full {
+    height: 100vh !important;
+    top: 0 !important;
+  }
+
+  .g-hamburger.g-hamburger--layout-full-info {
     height: 100vh !important;
     top: 0 !important;
   }
@@ -234,6 +279,10 @@ if ($header_layout !== '') {
     display: none;
   }
 
+  .g-hamburger--layout-full-info:before {
+    display: none;
+  }
+
   .g-hamburger .offcanvas-header,
   .g-hamburger .offcanvas-body {
     position: relative;
@@ -252,6 +301,10 @@ if ($header_layout !== '') {
   }
 
   .g-hamburger--layout-full .g-header__logo {
+    display: none;
+  }
+
+  .g-hamburger--layout-full-info .g-header__logo {
     display: none;
   }
 
@@ -274,6 +327,20 @@ if ($header_layout !== '') {
     position: fixed;
     top: 24px;
     right: 26px;
+    z-index: 1305;
+  }
+
+  .g-hamburger--layout-full-info .btn-close {
+    width: 58px;
+    height: 58px;
+    background-color: transparent;
+    border: 0;
+    filter: invert(1) grayscale(1);
+    opacity: 0.92;
+    pointer-events: auto;
+    position: fixed;
+    top: 34px;
+    right: 42px;
     z-index: 1305;
   }
 
@@ -336,6 +403,21 @@ if ($header_layout !== '') {
     pointer-events: auto;
   }
 
+  .g-hamburger--layout-full-info .offcanvas-header {
+    border: 0;
+    height: 0;
+    inset: 0 0 auto;
+    min-height: 0;
+    padding: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 4;
+  }
+
+  .g-hamburger--layout-full-info .offcanvas-header .btn-close {
+    pointer-events: auto;
+  }
+
   .g-hamburger--layout-full .offcanvas-body {
     align-items: center;
     justify-content: center;
@@ -345,8 +427,22 @@ if ($header_layout !== '') {
     padding: 86px 7vw 72px;
   }
 
+  .g-hamburger--layout-full-info .offcanvas-body {
+    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    gap: clamp(54px, 7vw, 112px);
+    height: 100vh;
+    overflow-y: auto;
+    padding: 84px 11vw 76px;
+  }
+
   .g-hamburger--layout-full .g-hamburger__nav {
     width: min(1040px, 100%);
+  }
+
+  .g-hamburger--layout-full-info .g-hamburger__nav {
+    width: 100%;
   }
 
   .g-hamburger--layout-full .list {
@@ -357,7 +453,22 @@ if ($header_layout !== '') {
     margin: 0 !important;
   }
 
+  .g-hamburger--layout-full-info .list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(42px, 6vw, 88px);
+    row-gap: 22px;
+    margin: 0 !important;
+  }
+
   .g-hamburger--layout-full .list .nav-item {
+    border: 0;
+    overflow: hidden;
+    padding: 0 !important;
+    width: auto !important;
+  }
+
+  .g-hamburger--layout-full-info .list .nav-item {
     border: 0;
     overflow: hidden;
     padding: 0 !important;
@@ -379,13 +490,42 @@ if ($header_layout !== '') {
     position: relative;
   }
 
+  .g-hamburger--layout-full-info .list .nav-link {
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.68);
+    flex-direction: column-reverse;
+    font-size: 14px;
+    font-weight: 500;
+    gap: 7px;
+    justify-content: flex-start;
+    line-height: 1.45;
+    min-height: 70px;
+    padding: 0 0 18px;
+    position: relative;
+  }
+
   .g-hamburger--layout-full .list .nav-link:before {
+    display: none;
+  }
+
+  .g-hamburger--layout-full-info .list .nav-link:before {
     display: none;
   }
 
   .g-hamburger--layout-full .list .nav-link:after {
     color: #899294;
     font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .g-hamburger--layout-full-info .list .nav-link:after {
+    color: #fff;
+    font-size: 28px;
     font-weight: 900;
     letter-spacing: 0;
     line-height: 1;
@@ -400,6 +540,101 @@ if ($header_layout !== '') {
 
   .g-hamburger--layout-full .list .nav-link:hover:after {
     color: var(--kc);
+  }
+
+  .g-hamburger--layout-full-info .list .nav-link:hover {
+    color: #fff;
+    border-bottom-color: rgba(255, 255, 255, 0.42);
+    transform: translateX(4px);
+  }
+
+  .g-hamburger--layout-full-info .list .nav-link:hover:after {
+    color: var(--ac);
+  }
+
+  .g-hamburger__info {
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+    display: none;
+    min-height: min(600px, 76vh);
+    padding: 8px 0 8px clamp(34px, 4vw, 58px);
+  }
+
+  .g-hamburger--layout-full-info .g-hamburger__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .g-hamburger__info-logo {
+    margin: 0 0 46px;
+  }
+
+  .g-hamburger__info-logo img {
+    filter: brightness(0) invert(1);
+    height: auto;
+    max-width: 240px;
+  }
+
+  .g-hamburger__info-label {
+    color: rgba(255, 255, 255, 0.34);
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    margin: 0 0 12px;
+  }
+
+  .g-hamburger__info-tel {
+    color: #fff;
+    display: inline-flex;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0 0 28px;
+    text-decoration: none;
+  }
+
+  .g-hamburger__info-actions {
+    display: grid;
+    gap: 12px;
+    margin: 0 0 42px;
+  }
+
+  .g-hamburger__info-btn {
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #fff;
+    display: flex;
+    font-size: 15px;
+    font-weight: 800;
+    justify-content: space-between;
+    letter-spacing: 0;
+    min-height: 56px;
+    padding: 0 18px 0 20px;
+    text-decoration: none;
+    transition: background-color 0.24s ease, border-color 0.24s ease, transform 0.24s ease;
+  }
+
+  .g-hamburger__info-btn:after {
+    content: '>';
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .g-hamburger__info-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.48);
+    color: #fff;
+    transform: translateX(4px);
+  }
+
+  .g-hamburger__info-address {
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.9;
+    margin: 0;
   }
 
   .g-hamburger .lower,
@@ -431,6 +666,11 @@ if ($header_layout !== '') {
       top: 0 !important;
     }
 
+    .g-hamburger.g-hamburger--layout-full-info {
+      height: 100vh !important;
+      top: 0 !important;
+    }
+
     .g-hamburger .offcanvas-header {
       padding: 22px 22px 18px;
     }
@@ -448,7 +688,17 @@ if ($header_layout !== '') {
       background: #f5f5f4;
     }
 
+    .g-hamburger--layout-full-info {
+      background: #141922;
+    }
+
     .g-hamburger--layout-full .offcanvas-header {
+      height: 0;
+      min-height: 0;
+      padding: 0;
+    }
+
+    .g-hamburger--layout-full-info .offcanvas-header {
       height: 0;
       min-height: 0;
       padding: 0;
@@ -459,11 +709,26 @@ if ($header_layout !== '') {
       padding: 82px 28px 48px;
     }
 
+    .g-hamburger--layout-full-info .offcanvas-body {
+      display: block;
+      height: 100vh;
+      padding: 82px 28px 48px;
+    }
+
     .g-hamburger--layout-full .list {
       display: block !important;
     }
 
+    .g-hamburger--layout-full-info .list {
+      display: block !important;
+    }
+
     .g-hamburger--layout-full .btn-close {
+      top: 20px;
+      right: 20px;
+    }
+
+    .g-hamburger--layout-full-info .btn-close {
       top: 20px;
       right: 20px;
     }
@@ -474,8 +739,38 @@ if ($header_layout !== '') {
       padding: 0;
     }
 
+    .g-hamburger--layout-full-info .list .nav-link {
+      font-size: 13px;
+      min-height: 0;
+      padding: 0 0 18px;
+    }
+
     .g-hamburger--layout-full .list .nav-link:after {
       font-size: 26px;
+    }
+
+    .g-hamburger--layout-full-info .list .nav-link:after {
+      font-size: 24px;
+    }
+
+    .g-hamburger--layout-full-info .g-hamburger__info {
+      border-left: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      margin-top: 34px;
+      min-height: 0;
+      padding: 34px 0 0;
+    }
+
+    .g-hamburger__info-logo {
+      margin-bottom: 28px;
+    }
+
+    .g-hamburger__info-logo img {
+      max-width: 190px;
+    }
+
+    .g-hamburger__info-tel {
+      font-size: 24px;
     }
   }
 </style>
@@ -495,5 +790,31 @@ if ($header_layout !== '') {
         <?php get_template_part('include/nav', null, 'hamburger'); ?>
       </ul>
     </nav>
+    <aside class="g-hamburger__info" aria-label="会社情報">
+      <?php if ($hamburger_info_logo) : ?>
+        <p class="g-hamburger__info-logo">
+          <img src="<?= esc_url($hamburger_info_logo); ?>" alt="<?= esc_attr($hamburger_company); ?>" width="240" height="80">
+        </p>
+      <?php endif; ?>
+      <?php if ($hamburger_tel) : ?>
+        <div class="g-hamburger__info-section">
+          <span class="g-hamburger__info-label">TEL</span>
+          <a href="tel:<?= esc_attr($hamburger_tel); ?>" class="g-hamburger__info-tel"><?= esc_html($hamburger_tel); ?></a>
+        </div>
+      <?php endif; ?>
+      <div class="g-hamburger__info-actions">
+        <a href="<?= esc_url(wmp_get_link('contact', '')); ?>" class="g-hamburger__info-btn">お問い合わせ</a>
+        <a href="<?= esc_url(wmp_get_link('download', '')); ?>" class="g-hamburger__info-btn">資料ダウンロード</a>
+      </div>
+      <?php if ($hamburger_zip || $hamburger_address) : ?>
+        <div class="g-hamburger__info-section">
+          <span class="g-hamburger__info-label">ADDRESS</span>
+          <p class="g-hamburger__info-address">
+            <?php if ($hamburger_zip) : ?>〒<?= esc_html($hamburger_zip); ?><br><?php endif; ?>
+            <?= esc_html($hamburger_address); ?>
+          </p>
+        </div>
+      <?php endif; ?>
+    </aside>
   </div>
 </div>

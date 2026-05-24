@@ -40,6 +40,7 @@ if (!function_exists('lai_template_header_hamburger_panel_styles')) {
     return array(
       'drawer' => 'サイドリスト',
       'full' => '全体表示',
+      'full-info' => '全体表示＋会社情報',
     );
   }
 }
