@@ -38,10 +38,31 @@ if (!function_exists('lai_template_header_hamburger_panel_styles')) {
   function lai_template_header_hamburger_panel_styles()
   {
     return array(
-      'gradient' => 'グラデーション',
-      'light' => 'ライト',
-      'minimal' => 'ミニマル',
+      'drawer' => 'サイドリスト',
+      'cards' => 'カード型',
+      'large' => '大きめメニュー',
     );
+  }
+}
+
+if (!function_exists('lai_template_normalize_header_hamburger_panel_style')) {
+  function lai_template_normalize_header_hamburger_panel_style($style)
+  {
+    $legacy_styles = array(
+      'gradient' => 'drawer',
+      'light' => 'cards',
+      'minimal' => 'large',
+    );
+
+    if (is_string($style) && array_key_exists($style, $legacy_styles)) {
+      return $legacy_styles[$style];
+    }
+
+    if (is_string($style) && array_key_exists($style, lai_template_header_hamburger_panel_styles())) {
+      return $style;
+    }
+
+    return 'drawer';
   }
 }
 
@@ -66,12 +87,12 @@ if (!function_exists('lai_template_current_header_hamburger_panel_style')) {
     if (function_exists('get_field')) {
       $style = get_field('header_hamburger_panel_style', 'option');
 
-      if (is_string($style) && array_key_exists($style, lai_template_header_hamburger_panel_styles())) {
-        return $style;
+      if (is_string($style) && $style !== '') {
+        return lai_template_normalize_header_hamburger_panel_style($style);
       }
     }
 
-    return 'gradient';
+    return 'drawer';
   }
 }
 
@@ -215,7 +236,7 @@ if (!function_exists('lai_template_register_header_fields')) {
           'type' => 'select',
           'instructions' => 'ハンバーガーメニューを開いた時のパネルデザインを選択します。',
           'choices' => lai_template_header_hamburger_panel_styles(),
-          'default_value' => 'gradient',
+          'default_value' => 'drawer',
           'allow_null' => 0,
           'multiple' => 0,
           'ui' => 1,
