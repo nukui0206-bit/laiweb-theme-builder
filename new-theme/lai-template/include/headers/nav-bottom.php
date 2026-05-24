@@ -222,7 +222,7 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
       </div>
 
       <div class="g-header__actions col-auto ms-auto d-flex align-items-center">
-      <?php if (lai_template_should_show_header_cta()) : ?>
+      <?php if (lai_template_should_show_header_tel()) : ?>
         <?php if (is_string($header_tel) && $header_tel !== '') : ?>
           <div class="d-none d-xl-block">
             <a href="tel:<?= esc_attr($header_tel); ?>" class="g-header__tel">
@@ -230,6 +230,18 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
             </a>
           </div>
         <?php endif; ?>
+      <?php endif; ?>
+        <?php if (lai_template_should_show_header_cta_button(1)) : ?>
+          <div class="d-none d-xl-block">
+            <?php lai_template_render_header_cta_button(1); ?>
+          </div>
+        <?php endif; ?>
+        <?php if (lai_template_should_show_header_cta_button(2)) : ?>
+          <div class="d-none d-xl-block">
+            <?php lai_template_render_header_cta_button(2); ?>
+          </div>
+        <?php endif; ?>
+      <?php if (false && lai_template_should_show_header_cta()) : ?>
 
         <!-- Email Consultation Button -->
         <div class="d-none d-xl-block">

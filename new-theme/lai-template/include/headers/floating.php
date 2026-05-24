@@ -79,6 +79,31 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
     min-width: 136px;
   }
 
+  .g-header--floating .g-header__tel {
+    align-items: center;
+    background: rgba(var(--kc-rgb), 0.08);
+    border: 1px solid rgba(var(--kc-rgb), 0.16);
+    border-radius: 999px;
+    color: var(--kc);
+    display: flex;
+    height: 44px;
+    padding: 0 16px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .g-header--floating .g-header__tel-number {
+    color: var(--kc);
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  .g-header--floating .g-header__tel-number i {
+    font-size: 14px;
+    margin-right: 6px;
+  }
+
   .g-header--floating .g-nav .lower {
     width: calc(100vw - 72px);
     max-width: 1120px;
@@ -158,7 +183,20 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
       </div>
 
       <div class="g-header__actions col-auto ms-auto d-flex align-items-center">
-        <?php if (lai_template_should_show_header_cta()) : ?>
+        <div class="d-none d-lg-block">
+          <?php lai_template_render_header_tel(); ?>
+        </div>
+        <?php if (lai_template_should_show_header_cta_button(1)) : ?>
+          <div class="d-none d-lg-block">
+            <?php lai_template_render_header_cta_button(1); ?>
+          </div>
+        <?php endif; ?>
+        <?php if (lai_template_should_show_header_cta_button(2)) : ?>
+          <div class="d-none d-lg-block">
+            <?php lai_template_render_header_cta_button(2, 'g-header__action-btn--line'); ?>
+          </div>
+        <?php endif; ?>
+        <?php if (false && lai_template_should_show_header_cta()) : ?>
           <div class="d-none d-lg-block">
             <a href="<?= wmp_get_link('download', ''); ?>" class="g-header__action-btn c-btn-solid-border --white --small c-border u-font-pc-15 u-font-sp-15" style="--color: #fff; --bc: var(--kc); --border: transparent; --border2: transparent; --radius: 999px">
               <span class="c-btn-solid-border__txt">

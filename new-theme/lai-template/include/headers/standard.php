@@ -6,6 +6,33 @@ require(SLIB_DIR . '/lib/wmp-global.php');
 $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
 ?>
 
+<style>
+  .g-header .g-header__tel {
+    align-items: center;
+    background: rgba(var(--kc-rgb), 0.08);
+    border: 1px solid rgba(var(--kc-rgb), 0.16);
+    border-radius: 999px;
+    color: var(--kc);
+    display: flex;
+    height: 42px;
+    padding: 0 16px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .g-header .g-header__tel-number {
+    color: var(--kc);
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  .g-header .g-header__tel-number i {
+    font-size: 14px;
+    margin-right: 6px;
+  }
+</style>
+
 <header id="g-header" class="g-header" style="--background-color: #fff;">
   <div class="container-fluid px-3 py-3">
     <div class="row g-0 justify-content-between align-items-center">
@@ -32,7 +59,10 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
       </div>
 
       <div class="col-auto ms-auto d-flex align-items-center gap-2">
-      <?php if (lai_template_should_show_header_cta()) : ?>
+        <div class="d-none d-lg-block">
+          <?php lai_template_render_header_tel(); ?>
+        </div>
+      <?php if (false && lai_template_should_show_header_cta()) : ?>
         <!-- 無料相談ボタン -->
         <div class="d-none d-lg-block">
           <div class="g-header__nav text-end">
@@ -48,6 +78,20 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
           </div>
         </div>
       <?php endif; ?>
+        <?php if (lai_template_should_show_header_cta_button(1)) : ?>
+          <div class="d-none d-lg-block">
+            <div class="g-header__nav text-end">
+              <?php lai_template_render_header_cta_button(1, '', 'u-font-pc-16 u-font-sp-16'); ?>
+            </div>
+          </div>
+        <?php endif; ?>
+        <?php if (lai_template_should_show_header_cta_button(2)) : ?>
+          <div class="d-none d-lg-block">
+            <div class="g-header__nav text-end">
+              <?php lai_template_render_header_cta_button(2, '', 'u-font-pc-16 u-font-sp-16'); ?>
+            </div>
+          </div>
+        <?php endif; ?>
 
         <?php get_template_part('include/header-hamburger-button'); ?>
       </div>
