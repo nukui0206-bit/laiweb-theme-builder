@@ -16,8 +16,8 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
   }
 
   .g-header--nav-bottom .g-header__top {
-    min-height: 74px;
-    padding: 12px 24px 10px;
+    height: 70px;
+    padding: 0 24px;
   }
 
   .g-header--nav-bottom .g-header__logo-link-img {
@@ -25,7 +25,7 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
   }
 
   .g-header--nav-bottom .g-header__actions {
-    min-height: 52px;
+    height: 52px;
     gap: 10px;
   }
 
@@ -45,9 +45,15 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
   }
 
   .g-header--nav-bottom .g-header__action-btn {
+    height: 44px;
     min-width: 142px;
     border-radius: 999px !important;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .g-header--nav-bottom .g-header__tel {
@@ -57,6 +63,8 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
     color: var(--kc);
     display: flex;
     align-items: center;
+    justify-content: center;
+    height: 44px;
     min-height: 44px;
     line-height: 1;
     padding: 0 18px;
@@ -159,8 +167,8 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
 
   @media screen and (max-width: 1199px) {
     .g-header--nav-bottom .g-header__top {
-      min-height: 68px;
-      padding: 10px 16px;
+      height: 64px;
+      padding: 0 16px;
     }
 
     .g-header--nav-bottom .g-header__nav-row {
@@ -188,7 +196,7 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
     }
 
     .g-header--nav-bottom .g-header__actions {
-      min-height: 48px;
+      height: 48px;
       gap: 8px;
     }
 
