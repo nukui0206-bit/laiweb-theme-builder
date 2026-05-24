@@ -41,6 +41,7 @@ if (!function_exists('lai_template_header_hamburger_panel_styles')) {
       'drawer' => 'サイドリスト',
       'cards' => 'カード型',
       'large' => '大きめメニュー',
+      'full' => '全体表示',
     );
   }
 }
