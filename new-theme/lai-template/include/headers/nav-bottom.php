@@ -25,7 +25,23 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
   }
 
   .g-header--nav-bottom .g-header__actions {
+    min-height: 52px;
     gap: 10px;
+  }
+
+  .g-header--nav-bottom .g-header__actions > * {
+    flex: 0 0 auto;
+  }
+
+  .g-header--nav-bottom .lai-header-hamburger-btn {
+    align-self: center;
+    flex: 0 0 52px;
+    margin: 0 0 0 2px;
+    transform: none;
+  }
+
+  .g-header--nav-bottom .lai-header-hamburger-btn:hover {
+    transform: translateY(-1px);
   }
 
   .g-header--nav-bottom .g-header__action-btn {
@@ -169,6 +185,15 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
   @media screen and (max-width: 575px) {
     .g-header--nav-bottom .g-header__logo-link-img {
       max-width: 150px;
+    }
+
+    .g-header--nav-bottom .g-header__actions {
+      min-height: 48px;
+      gap: 8px;
+    }
+
+    .g-header--nav-bottom .lai-header-hamburger-btn {
+      flex-basis: 48px;
     }
   }
 </style>
