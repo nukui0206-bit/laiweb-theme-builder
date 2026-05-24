@@ -44,9 +44,6 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
               <span class="c-btn-solid-border__t"></span>
               <span class="c-btn-solid-border__r"></span>
               <span class="c-btn-solid-border__b"></span>
-              <span class="c-btn-solid-border__icon">
-                <i class="fas fa-angle-double-right"></i>
-              </span>
             </a>
           </div>
         </div>

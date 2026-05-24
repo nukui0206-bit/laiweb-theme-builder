@@ -35,32 +35,38 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
   }
 
   .g-header--nav-bottom .g-header__tel {
+    background: rgba(var(--kc-rgb), 0.08);
+    border: 1px solid rgba(var(--kc-rgb), 0.18);
+    border-radius: 999px;
     color: var(--kc);
     display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-    padding: 0 8px 0 0;
+    align-items: center;
+    min-height: 44px;
+    line-height: 1;
+    padding: 0 18px;
     text-decoration: none;
     white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(var(--kc-rgb), 0.08);
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
   }
 
-  .g-header--nav-bottom .g-header__tel-label {
-    color: var(--fc);
-    font-size: 10px;
-    font-weight: 700;
-    opacity: 0.72;
+  .g-header--nav-bottom .g-header__tel:hover {
+    background: rgba(var(--kc-rgb), 0.12);
+    border-color: rgba(var(--kc-rgb), 0.28);
+    transform: translateY(-1px);
   }
 
   .g-header--nav-bottom .g-header__tel-number {
     color: var(--kc);
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 900;
     letter-spacing: 0;
   }
 
   .g-header--nav-bottom .g-header__tel-number i {
-    font-size: 18px;
-    margin-right: 5px;
+    font-size: 17px;
+    margin-right: 7px;
+    transform: translateY(-1px);
   }
 
   .g-header--nav-bottom .g-header__nav-row {
@@ -148,7 +154,11 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
 
   @media screen and (max-width: 1399px) {
     .g-header--nav-bottom .g-header__tel-number {
-      font-size: 18px;
+      font-size: 20px;
+    }
+
+    .g-header--nav-bottom .g-header__tel {
+      padding: 0 14px;
     }
 
     .g-header--nav-bottom .g-header__action-btn {
@@ -181,7 +191,6 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
         <?php if (is_string($header_tel) && $header_tel !== '') : ?>
           <div class="d-none d-xl-block">
             <a href="tel:<?= esc_attr($header_tel); ?>" class="g-header__tel">
-              <span class="g-header__tel-label">電話相談</span>
               <span class="g-header__tel-number"><i class="fa-solid fa-phone-volume"></i><?= esc_html($header_tel); ?></span>
             </a>
           </div>
@@ -197,9 +206,6 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
             <span class="c-btn-solid-border__t"></span>
             <span class="c-btn-solid-border__r"></span>
             <span class="c-btn-solid-border__b"></span>
-            <span class="c-btn-solid-border__icon">
-              <i class="fas fa-angle-double-right"></i>
-            </span>
           </a>
         </div>
 
@@ -213,9 +219,6 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
             <span class="c-btn-solid-border__t"></span>
             <span class="c-btn-solid-border__r"></span>
             <span class="c-btn-solid-border__b"></span>
-            <span class="c-btn-solid-border__icon">
-              <i class="fas fa-angle-double-right"></i>
-            </span>
           </a>
         </div>
 
