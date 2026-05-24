@@ -90,7 +90,23 @@ if (!function_exists('lai_template_admin_settings_tabs')) {
         ];
 
         function postboxes() {
-          return $('.acf-postbox');
+          return $('.acf-postbox').not('.lai-settings-tabs__removed');
+        }
+
+        function moveLoadingScopeField() {
+          var $scope = $('.acf-field[data-name="loading_scope"]');
+          var $type = $('.acf-field[data-name="loading_type"]');
+
+          if (!$scope.length || !$type.length || $scope.data('laiMoved')) {
+            return;
+          }
+
+          var $sourceBox = $scope.closest('.acf-postbox');
+          $scope.insertAfter($type).data('laiMoved', true);
+
+          if ($sourceBox.length && !$sourceBox.find('.acf-field').length) {
+            $sourceBox.addClass('lai-settings-tabs__removed').hide();
+          }
         }
 
         function detectTab($box) {
@@ -126,6 +142,9 @@ if (!function_exists('lai_template_admin_settings_tabs')) {
           if (!$boxes.length || $('.lai-settings-tabs').length) {
             return;
           }
+
+          moveLoadingScopeField();
+          $boxes = postboxes();
 
           $boxes.each(function() {
             var $box = $(this);
