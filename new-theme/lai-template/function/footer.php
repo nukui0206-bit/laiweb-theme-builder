@@ -38,13 +38,6 @@ if (!function_exists('lai_template_register_footer_fields')) {
       'title' => 'フッター設定',
       'fields' => array(
         array(
-          'key' => 'field_lai_template_footer_tab',
-          'label' => 'フッター設定',
-          'name' => '',
-          'type' => 'tab',
-          'placement' => 'top',
-        ),
-        array(
           'key' => 'field_lai_template_footer_layout',
           'label' => 'フッター 表示形式',
           'name' => 'footer_layout',

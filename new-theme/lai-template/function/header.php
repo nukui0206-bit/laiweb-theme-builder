@@ -293,13 +293,6 @@ if (!function_exists('lai_template_register_header_fields')) {
       'title' => 'ヘッダー設定',
       'fields' => array(
         array(
-          'key' => 'field_lai_template_header_tab',
-          'label' => 'ヘッダー設定',
-          'name' => '',
-          'type' => 'tab',
-          'placement' => 'top',
-        ),
-        array(
           'key' => 'field_lai_template_header_layout',
           'label' => 'ヘッダー 表示形式',
           'name' => 'header_layout',
