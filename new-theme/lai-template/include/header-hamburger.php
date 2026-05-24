@@ -323,8 +323,17 @@ if ($header_layout !== '') {
 
   .g-hamburger--layout-full .offcanvas-header {
     border: 0;
+    height: 0;
+    inset: 0 0 auto;
     min-height: 0;
     padding: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 4;
+  }
+
+  .g-hamburger--layout-full .offcanvas-header .btn-close {
+    pointer-events: auto;
   }
 
   .g-hamburger--layout-full .offcanvas-body {
@@ -440,6 +449,7 @@ if ($header_layout !== '') {
     }
 
     .g-hamburger--layout-full .offcanvas-header {
+      height: 0;
       min-height: 0;
       padding: 0;
     }
