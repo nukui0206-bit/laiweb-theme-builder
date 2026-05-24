@@ -344,7 +344,14 @@ if ($header_layout !== '') {
   }
 
   .g-hamburger--layout-full .g-hamburger__nav {
-    width: min(760px, 100%);
+    width: min(1080px, 100%);
+  }
+
+  .g-hamburger--layout-full .list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(42px, 7vw, 92px);
+    row-gap: 8px;
   }
 
   .g-hamburger--layout-full .list .nav-item {
@@ -355,9 +362,10 @@ if ($header_layout !== '') {
   .g-hamburger--layout-full .list .nav-link {
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     color: #fff;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 900;
-    padding: 22px 0 22px 40px;
+    min-height: 88px;
+    padding: 20px 0 20px 40px;
     position: relative;
   }
 
@@ -382,7 +390,8 @@ if ($header_layout !== '') {
 
   .g-hamburger--layout-full .list .nav-link:hover {
     color: #fff;
-    transform: translateX(8px);
+    border-bottom-color: rgba(255, 255, 255, 0.42);
+    transform: translateX(6px);
   }
 
   .g-hamburger--layout-full .list .nav-link:hover:before {
@@ -449,6 +458,10 @@ if ($header_layout !== '') {
       padding: 82px 28px 48px;
     }
 
+    .g-hamburger--layout-full .list {
+      display: block;
+    }
+
     .g-hamburger--layout-full .btn-close {
       top: 20px;
       right: 20px;
@@ -456,6 +469,7 @@ if ($header_layout !== '') {
 
     .g-hamburger--layout-full .list .nav-link {
       font-size: 22px;
+      min-height: 0;
       padding: 18px 0 18px 28px;
     }
   }
