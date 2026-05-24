@@ -130,7 +130,7 @@ $header_tel = function_exists('get_field') ? get_field('tel_contact', 'option') 
     box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
     left: 50%;
     right: auto;
-    top: 68px;
+    top: 86px;
     margin: 0;
     padding: 22px;
     transform: translateX(-50%);
