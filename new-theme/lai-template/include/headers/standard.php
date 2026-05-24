@@ -21,6 +21,50 @@ $logo_wrap = (is_front_page() || is_home()) ? 'h1' : 'div';
     color: var(--kc);
   }
 
+  .g-header--standard .g-nav .lower {
+    width: calc(100vw - 72px);
+    max-width: 1120px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(var(--kc-rgb), 0.12);
+    border-radius: 18px;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16);
+    left: 50%;
+    right: auto;
+    top: 86px;
+    margin: 0;
+    padding: 22px;
+    transform: translateX(-50%);
+    z-index: 140;
+  }
+
+  .g-header--standard .g-nav .lower .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .g-header--standard .g-nav .lower .nav-item {
+    padding: 0 10px;
+  }
+
+  .g-header--standard .g-nav .lower .nav-link {
+    background: rgba(var(--kc-rgb), 0.04);
+    border-radius: 10px;
+    color: var(--fc);
+    height: 100%;
+    padding: 12px;
+  }
+
+  .g-header--standard .g-nav .lower .nav-link:hover {
+    background: rgba(var(--kc-rgb), 0.08);
+    color: var(--kc);
+  }
+
+  .g-header--standard .g-nav .lower .js-close__btn {
+    color: var(--kc);
+    top: 8px;
+    right: 10px;
+  }
+
   .g-header--standard .g-header__actions {
     gap: 8px;
   }
